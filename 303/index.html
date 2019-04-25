@@ -1,1 +1,1453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
 
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>303.연산자(Operators)</title>
+
+</head>
+
+<body class="xhtmlEditorBody background_no" id="viewXhtml_body">
+<h1 class="printNxhtmlTitle hentry" style="display:none;"><a href="http://mie.springnote.com/pages/9972972" rel="bookmark">303.연산자(Operators)</a></h1>
+
+
+	<!-- SPRINGNOTE::PAGE_CONTENT_START -->
+	<div id="toc" style="BORDER-BOTTOM: tan 1px solid; BORDER-LEFT: tan 1px solid; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,250); PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: tan 1px solid; BORDER-RIGHT: tan 1px solid; PADDING-TOP: 2px;">
+<p><strong>목차</strong></p>
+<hr />
+<ol>
+<li><a href="#toc_0" title="toc_0" class="external">연사자의 분류</a></li>
+<li><a href="#toc_1" title="toc_1" class="external">연산자</a></li>
+<li><a href="#toc_2" title="toc_2" class="external">산술연산자</a>
+<ol>
+<li><a href="#toc_3" title="toc_3" class="external">가수 연산자 (Additive Operators) :&nbsp; +&nbsp; -</a></li>
+<li><a href="#toc_4" title="toc_4" class="external">배수 연산자 (Multiplicative Operators) :&nbsp; *&nbsp; /&nbsp; %(나머지)</a></li>
+<li><a href="#toc_5" title="toc_5" class="external">부호연산자 :&nbsp; +&nbsp; -</a></li>
+<li><a href="#toc_6" title="toc_6" class="external">증감연산자 :&nbsp; ++&nbsp; --</a></li>
+</ol>
+</li>
+<li><a href="#toc_7" title="toc_7" class="external">대입연산자(Assignment Operators)</a>
+<ol>
+<li><a href="#toc_8" title="toc_8" class="external">대입연산자</a></li>
+<li><a href="#toc_9" title="toc_9" class="external">다중치환 (Multiple assignment)</a></li>
+<li><a href="#toc_10" title="toc_10" class="external">복합치환 (Compound Assignment)</a></li>
+</ol>
+</li>
+<li><a href="#toc_11" title="toc_11" class="external">관계 연산자 (Relational Operators)</a>
+<ol>
+<li><a href="#toc_12" title="toc_12" class="external">관계연산자</a></li>
+<li><a href="#toc_13" title="toc_13" class="external">등가연산자</a></li>
+</ol>
+</li>
+<li>
+<p><a href="#toc_14" title="toc_14" class="external">논리 연산자(Logic Operators)</a></p>
+<ol>
+<li><a href="#toc_15" title="toc_15" class="external">논리부정 (Logical Negation : NOT) : !</a></li>
+<li><a href="#toc_16" title="toc_16" class="external">논리곱(AND)과 논리합(OR) : &amp;&amp;&nbsp;&nbsp; ||</a></li>
+<li><a href="#toc_17" title="toc_17" class="external">Short Circuit</a></li>
+</ol>
+</li>
+<li><a href="#toc_18" title="toc_18" class="external">Bit 연산자</a>
+<ol>
+<li><a href="#toc_19" title="toc_19" class="external">Bit 연산자 (bitwise logical operators) :&nbsp; &amp;&nbsp;&nbsp; |&nbsp;&nbsp; ^</a></li>
+<li><a href="#toc_20" title="toc_20" class="external">1의 보수 연산자 (Bitwise Complement) :&nbsp; ~</a></li>
+<li><a href="#toc_21" title="toc_21" class="external">Bit 연산자의 연산 결과</a></li>
+<li><a href="#toc_22" title="toc_22" class="external">스타일이나 플래그 지정에 자주 쓰이는 비트 연산</a></li>
+<li><a href="#toc_23" title="toc_23" class="external">Shift 연산자 :&nbsp; &lt;&lt;&nbsp;&nbsp; &gt;&gt;</a></li>
+</ol>
+</li>
+<li><a href="#toc_24" title="toc_24" class="external">Pointer 연산자</a>
+<ol>
+<li><a href="#toc_25" title="toc_25" class="external">간접 연산자 (Indirection Operator) :&nbsp; *</a></li>
+<li><a href="#toc_26" title="toc_26" class="external">주소연산자 (Address Operator) :&nbsp; &amp;</a></li>
+</ol>
+</li>
+<li><a href="#toc_27" title="toc_27" class="external">형 관련 연산자</a>
+<ol>
+<li><a href="#toc_28" title="toc_28" class="external">Cast 연산자 : (type-name) 또는 type-name(항)</a></li>
+<li><a href="#toc_29" title="toc_29" class="external">sizeof 연산자 : sizeof(expr) 또는 sizeof(type)</a></li>
+<li><a href="#toc_30" title="toc_30" class="external">조건연산자 (Conditional Operator) :&nbsp; ? :</a></li>
+<li><a href="#toc_31" title="toc_31" class="external">순차연산자 (Comma Operator) :&nbsp; ,</a></li>
+</ol>
+</li>
+<li><a href="#toc_32" title="toc_32" class="external">연산자 우선순위</a></li>
+<li><a href="#toc_33" title="toc_33" class="external">Workshop</a></li>
+</ol>
+</div>
+<p>&nbsp;</p>
+<h3>연산자의 분류<sup class="tocAnchorContainer"><a href="#toc_0" title="toc_0" class="anchor" id="toc_0" >#</a></sup></h3>
+<table class="dataTable2">
+<tbody>
+<tr>
+<th>C/C++</th>
+<td>
+<ul>
+<li>산술연산자 :&nbsp; +&nbsp; -&nbsp; *&nbsp; /&nbsp; %&nbsp; ++&nbsp; --</li>
+<li>대입연산자 :&nbsp; =&nbsp; +=&nbsp; -=&nbsp; *=&nbsp; /=&nbsp; %=&nbsp; &lt;&lt;=&nbsp; &gt;&gt;=&nbsp; &amp;=&nbsp; ^=&nbsp; |=</li>
+<li>관계연산자 :&nbsp; &lt;&nbsp; &lt;=&nbsp; ==&nbsp; &gt;=&nbsp; &gt;&nbsp; !=</li>
+<li>논리연산자 :&nbsp; !&nbsp; &amp;&amp;&nbsp; ||</li>
+<li>Bit 연산자 :&nbsp; ~&nbsp; &amp;&nbsp; |&nbsp; ^&nbsp; &lt;&lt;&nbsp; &gt;&gt;</li>
+<li>Pointer 연산자&nbsp;:&nbsp; &amp;&nbsp; *</li>
+<li>형 관련 연산자 :&nbsp; (type)&nbsp; sizeof</li>
+<li>조건연산자 :&nbsp; ?&nbsp; :</li>
+<li>순차연산자 :&nbsp; ,</li>
+<li>첨자연산자 :&nbsp; [ ]</li>
+<li>함수호출연산자 :&nbsp; ( )</li>
+<li>복합체 연산자 :&nbsp; .&nbsp; -&gt;</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>C++</th>
+<td>
+<ul>
+<li>참조영역 지정자 :&nbsp; ::</li>
+<li>메모리 관련 연산자 :&nbsp; new&nbsp; delete</li>
+<li>멤버 포인터 연산자 :&nbsp; -&gt;*&nbsp; .*</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h3>연산자<sup class="tocAnchorContainer"><a href="#toc_1" title="toc_1" class="anchor" id="toc_1" >#</a></sup></h3>
+<ul>
+<li>연산자(Operator) : 산술 연산을 나타내는 기호</li>
+<li>피연산자(Operand) : 연산하는 대상</li>
+<li>
+<p>피연산자 수에 따라</p>
+<ul>
+<li>단항 연산자(unary operator) : 하나의 피연산자만을 취함</li>
+<li>이항 연산자(binary operator) : 두나의 피연산자만을 취함</li>
+<li>삼항 연산자(ternary operator) : 세하나의 피연산자만을 취함</li>
+</ul>
+</li>
+<li>
+<p>표기법에 따라</p>
+<ul>
+<li>전위표기(prefix notation) :&nbsp;&nbsp; +35 &nbsp; ++i</li>
+<li>후위표기(postfix notation) :&nbsp;&nbsp; 35+ &nbsp; i++</li>
+<li>중위표기(infix notation) :&nbsp;&nbsp; 3+5</li>
+</ul>
+</li>
+<li>
+<p>가환연산자(*, +, &amp;, |, ^) 주의사항</p>
+<ul>
+<li>교환적이고 결합적이다.</li>
+<li>이 식의 평가 순서는 대수적으로 동치</li>
+<li>
+<p>사용자가 괄호를 하여도 compiler가 임의로 재배치하여 평가하므로 side effect가 유발할 우려가 있다.</p>
+<ul>
+<li>임시 변수나 괄호를 사용하여 평가 순서를 명시적으로 나타내는게 바람직</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h3>산술연산자<sup class="tocAnchorContainer"><a href="#toc_2" title="toc_2" class="anchor" id="toc_2" >#</a></sup></h3>
+<ul>
+<li>
+<h5>가수 연산자 (Additive Operators) :&nbsp; +&nbsp; -<sup class="tocAnchorContainer"><a href="#toc_3" title="toc_3" class="anchor" id="toc_3" >#</a></sup></h5>
+<ul>
+<li>이항연산자</li>
+<li>오퍼랜드는 임의의 산술형태</li>
+<li>Pointer에 대한 연산에도 쓰임</li>
+<li>결합순서는 --&gt; 이다</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>배수 연산자 (Multiplicative Operators) :&nbsp; *&nbsp; /&nbsp; %(나머지)<sup class="tocAnchorContainer"><a href="#toc_4" title="toc_4" class="anchor" id="toc_4" >#</a></sup></h5>
+<ul>
+<li>이항연산자</li>
+<li>*, /의 오퍼랜드는 산술형태</li>
+<li>
+<p>%의 오퍼랜드는 정수형태</p>
+<ul>
+<li>10.3 % 3.2 는 에러 --&gt; fmod(10.3, 3.2) 함수 호출문을 사용</li>
+</ul>
+</li>
+<li>
+<p>정수/정수는 결과도 정수이다.</p>
+<ul>
+<li>5/4 --&gt; 1,&nbsp; 5.0/4.0 --&gt; 1.25</li>
+</ul>
+</li>
+<li>결합순서는 --&gt; 이다</li>
+</ul>
+</li>
+</ul>
+<table width="588" style="MARGIN-LEFT: 2em;">
+<tbody>
+<tr style="MARGIN-LEFT: 4em;">
+<td>
+<p>&nbsp;&nbsp; int a, b, c, d;</p>
+<p>&nbsp;&nbsp; a = 2;&nbsp; b = -3;&nbsp; c = 7;&nbsp; d = -19;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="dataTable2" width="661" style="MARGIN-LEFT: 2em;">
+<thead>
+<tr>
+<th>
+<p>수식</p>
+</th>
+<th>
+<p>연산 우선순위와 결합성</p>
+</th>
+<th>
+<p>수식의 결과</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<p>a/b</p>
+<p>c/b/a</p>
+<p>c%a</p>
+<p>a%b</p>
+<p>d/b%a</p>
+<p>-a*d</p>
+<p>a%-b*c</p>
+<p>9/c+-20/d</p>
+<p>-d%c-b/a*5+5</p>
+<p>7-a%(3+b)</p>
+</td>
+<td>
+<p>a/b</p>
+<p>(c/b)/a</p>
+<p>c%a</p>
+<p>a%b</p>
+<p>(d/b)%a</p>
+<p>(-a)*d</p>
+<p>(a%(-b)) * c</p>
+<p>(9/c)+((-20)/d)</p>
+<p>(((-d)%c)-((b/a)*5))+5</p>
+<p>7-(a%(3+b))</p>
+</td>
+<td>
+<p>0</p>
+<p>-1</p>
+<p>1</p>
+<p>기종에 의존적, (2)</p>
+<p>0</p>
+<p>38</p>
+<p>14</p>
+<p>2</p>
+<p>15</p>
+<p>오류</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>// 초를 분과 초로 환산하는 프로그램<br />
+#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+const int SM = 60;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int sec, min, left;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Just enter the number of seconds.\n";<br />
+&nbsp;&nbsp;&nbsp; cin &gt;&gt; sec;<br />
+&nbsp;&nbsp;&nbsp; min = sec / SM;<br />
+&nbsp;&nbsp;&nbsp; left = sec % SM;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; sec &lt;&lt; " second is " &lt;&lt; min &lt;&lt; " minutes. " &lt;&lt; left &lt;&lt; " seconds.\n";<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>부호연산자 :&nbsp; +&nbsp; -<sup class="tocAnchorContainer"><a href="#toc_5" title="toc_5" class="anchor" id="toc_5" >#</a></sup></h5>
+<ul>
+<li>단항연산자</li>
+<li>오퍼랜드는 산술형태</li>
+<li>결합순서는 &lt;-- 이다</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int a, abs_a;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cin &gt;&gt; a;<br />
+&nbsp;&nbsp;&nbsp; if (a &lt; 0)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; abs_a = -a;<br />
+&nbsp;&nbsp;&nbsp; else<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; abs_a = a;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; a &lt;&lt; "의 절대치는 " &lt;&lt; abs_a &lt;&lt; endl;<br />
+}</li>
+</ol>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>증감연산자 :&nbsp; ++&nbsp; --<sup class="tocAnchorContainer"><a href="#toc_6" title="toc_6" class="anchor" id="toc_6" >#</a></sup></h5>
+<ul>
+<li>단항연산자</li>
+<li>간결하고 이해가 쉽고 보다 효출적인 코드를 생성</li>
+<li>
+<p>오퍼랜드는 좌변값(lvalue)을 갖는 산술형 데이터</p>
+<ul>
+<li>좌변값(lvalue)이란 대입문 좌측에 쓸 수 있는 것으로 l은 left 또는 load를 의미한다.</li>
+<li>즉, 저장 가능한 변수를 의미</li>
+<li>2 = a;&nbsp; x + y = 10 처럼 상수나 수식을 대입문 좌측에 쓸 수 없다.</li>
+</ul>
+</li>
+<li>
+<p>부작용(side effect)에 주의해야 한다.</p>
+<ul>
+<li>ex) x = 2;&nbsp; y = i / ++x;&nbsp; --&gt;&nbsp; y = 2 / 3 or 3 / 3&nbsp; ?</li>
+<li>한 변수가 수식 내에 두번 이상 쓰이면 증감연산자 사용 금지</li>
+</ul>
+</li>
+<li>결합순서는 &lt;-- 이다.</li>
+<li>
+<p>전위형(prefix)</p>
+<ul>
+<li>오퍼랜드를 먼저 1만큼 증가(감소) 시킨 후 수식에 참여</li>
+</ul>
+<ol class="code">
+<li>a = b + ++i;&nbsp;&nbsp; --&gt;&nbsp;&nbsp; i = i + 1;&nbsp; a = b + i;</li>
+</ol>
+</li>
+<li>
+<p>후위형(Postfix)</p>
+<ul>
+<li>현재의 값으로 수식을 계산한 후 오퍼랜드는 1 증가(감소)</li>
+</ul>
+<ol class="code">
+<li>a = b + i++;&nbsp;&nbsp; --&gt;&nbsp;&nbsp; a = b + i;&nbsp; i = i + 1;</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 4em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; // 예제 1<br />
+&nbsp;&nbsp;&nbsp; int a = 1, b = 1;<br />
+&nbsp;&nbsp;&nbsp; int aplus, bplus;<br />
+<br />
+&nbsp;&nbsp;&nbsp; aplus = a++;&nbsp; // postfix : aplus = a, a = a + 1<br />
+&nbsp;&nbsp;&nbsp; bplus = ++b;&nbsp; // prefix : b = b + 1, bplus = b<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "a aplus b bplus\n";<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; a &lt;&lt; "&nbsp;&nbsp; " &lt;&lt; aplus &lt;&lt; "&nbsp;&nbsp; "<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;&lt; b &lt;&lt; "&nbsp;&nbsp; " &lt;&lt; bplus &lt;&lt; '\n';<br />
+<br />
+&nbsp;&nbsp;&nbsp; // 예제 2<br />
+&nbsp;&nbsp;&nbsp; int count = 0, sum = 0;<br />
+<br />
+&nbsp;&nbsp;&nbsp; while (++count &lt; 10)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; sum = sum + count;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; count &lt;&lt; "\t" &lt;&lt; sum &lt;&lt; "\n";<br />
+<br />
+&nbsp;&nbsp;&nbsp; // 예제 3<br />
+&nbsp;&nbsp;&nbsp; count = 0, sum = 0;<br />
+<br />
+&nbsp;&nbsp;&nbsp; while (count++ &lt; 10)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; sum = sum + count;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; count &lt;&lt; "\t" &lt;&lt; sum &lt;&lt; "\n";<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<h3>대입연산자(Assignment Operators)<sup class="tocAnchorContainer"><a href="#toc_7" title="toc_7" class="anchor" id="toc_7" >#</a></sup></h3>
+<ul>
+<li>
+<h5>대입연산자<sup class="tocAnchorContainer"><a href="#toc_8" title="toc_8" class="anchor" id="toc_8" >#</a></sup></h5>
+<ul>
+<li>C에서 대입은 문이 아니고 식(연산)으로 취급한다.</li>
+<li>이항연산자</li>
+<li>왼쪽 오퍼랜드는 좌변값(lvalue)을 가져야 한다.</li>
+<li>오른쪽 오퍼랜드는 산술형태이다.</li>
+<li>결합순서는 &lt;-- 이다.</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>다중치환 (Multiple assignment)<sup class="tocAnchorContainer"><a href="#toc_9" title="toc_9" class="anchor" id="toc_9" >#</a></sup></h5>
+<ul>
+<li>varN = varN_1 = ... = var1 = expr</li>
+<li>
+<table class="dataTable2">
+<tbody>
+<tr>
+<td>
+<p>good = 0;</p>
+<p>better = 0;</p>
+<p>best = 0;</p>
+</td>
+<td>best = better = good = 0;</td>
+</tr>
+<tr>
+<td>
+<p>good = 0;</p>
+<p>better = good + 1;</p>
+<p>best = better + 2;</p>
+</td>
+<td>best = (better=(goo=0)+1) + 2</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int max, mid, min;<br />
+<br />
+&nbsp;&nbsp;&nbsp; mid = (min = 1) + 2;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; " min = " &lt;&lt; min &lt;&lt; " mid = " &lt;&lt; mid &lt;&lt; " max = " &lt;&lt; (max=5) &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; max = mid = min = (-2 + 5) * 6 + (4 + 3 * (2 + 3));<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; " min = " &lt;&lt; min &lt;&lt; " mid = " &lt;&lt; mid &lt;&lt; " max = " &lt;&lt; max &lt;&lt; endl;<br />
+}</li>
+</ol>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>복합치환 (Compound Assignment)<sup class="tocAnchorContainer"><a href="#toc_10" title="toc_10" class="anchor" id="toc_10" >#</a></sup></h5>
+<ol class="code">
+<li>expr1 op= expr2</li>
+</ol>
+<ul>
+<li>op --&gt; +&nbsp; -&nbsp; *&nbsp; /&nbsp; %&nbsp; &lt;&lt;&nbsp; &gt;&gt;&nbsp; &amp;&nbsp; ^&nbsp; |</li>
+<li>연산속도가 빠르고 Compile이 효율적이다.</li>
+<li>
+<table class="dataTable2">
+<tbody>
+<tr>
+<td>
+<p>a = a + 1;</p>
+<p>b = b - 2;</p>
+<p>c = c * 3;</p>
+<p>d = d / 4;</p>
+<p>e = e % 5;</p>
+</td>
+<td>
+<p>a += 1;</p>
+<p>b -= 2;</p>
+<p>c *= 3;</p>
+<p>d /= 4;</p>
+<p>e %= 5;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int x = 1, y = 1, z = 1;<br />
+&nbsp;&nbsp;&nbsp; x += y += z;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; x &lt;&lt; " " &lt;&lt; y &lt;&lt; " " &lt;&lt; z &lt;&lt; " " &lt;&lt; endl;<br />
+}</li>
+</ol>
+</li>
+</ul>
+<p style="MARGIN-LEFT: 2em;">&nbsp;</p>
+<table style="MARGIN-LEFT: 2em;">
+<tbody>
+<tr style="MARGIN-LEFT: 6em;">
+<td>
+<p>&nbsp;&nbsp; int i, j, k, m, n;</p>
+<p>&nbsp;&nbsp; i = j = k = m = n = 3;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="dataTable2" style="MARGIN-LEFT: 2em;">
+<thead>
+<tr>
+<th>
+<p>수식</p>
+</th>
+<th>
+<p>연산 우선순위와 결합성</p>
+</th>
+<th>
+<p>수식의 결과</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<p>i += ++j + 3</p>
+<p>k %= m = 1 + n / 2</p>
+<p>1 + 3 * n += 7 / 5</p>
+<p>1 + 3 * (n += 7) /5</p>
+</td>
+<td>
+<p>i = (i + ((++j) + 3))</p>
+<p>k = (k % (m = (1 + n / 2)))</p>
+<p>(1 + (3 * n)) += (7 / 5)</p>
+<p>1 + (3 * (n = (n + 7)) / 5)</p>
+</td>
+<td>
+<p>10</p>
+<p>1</p>
+<p>에러</p>
+<p>7</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="MARGIN-LEFT: 2em;">&nbsp;</p>
+<h3>관계 연산자 (Relational Operators)<sup class="tocAnchorContainer"><a href="#toc_11" title="toc_11" class="anchor" id="toc_11" >#</a></sup></h3>
+<ul>
+<li>이항연산자</li>
+<li>오퍼랜드는 산술형태</li>
+<li>연산결과가 참이면 1&nbsp; 거짓이면 0</li>
+<li>결합순서는 --&gt; 이다</li>
+<li>
+<h5>관계연산자<sup class="tocAnchorContainer"><a href="#toc_12" title="toc_12" class="anchor" id="toc_12" >#</a></sup></h5>
+</li>
+</ul>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>&lt;&nbsp;&nbsp; &gt;&nbsp;&nbsp; &lt;=&nbsp;&nbsp; &gt;=</li>
+</ol>
+<ul>
+<li>가능한 왼쪽에 작은수치를 오른쪽에 큰 수치를 위치시키고 비교</li>
+</ul>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>if (a &gt; 10 &amp;&amp; a &lt;= 20)&nbsp; // (X)</li>
+<li>if (10 &lt; a &amp;&amp; a &lt;= 20)&nbsp; // (O)</li>
+</ol>
+<p style="MARGIN-LEFT: 2em;">&nbsp;</p>
+<table style="MARGIN-LEFT: 2em;">
+<tbody>
+<tr style="MARGIN-LEFT: 4em;">
+<td>
+<p>&nbsp;&nbsp; char c = 'w';</p>
+<p>&nbsp;&nbsp; int i = 1, j = 2, k = -7;</p>
+<p>&nbsp;&nbsp; double x = 7e+33, y = 0.1;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="dataTable2" style="MARGIN-LEFT: 2em;">
+<thead>
+<tr>
+<th>
+<p>수식</p>
+</th>
+<th>
+<p>연산 우선순위와 결합성</p>
+</th>
+<th>
+<p>수식의 결과</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<p>'a' + 1 &lt; c</p>
+<p>-i-5*j &gt;= k+1</p>
+<p>3 &lt; j &lt; 5</p>
+<p>x-3.333 &lt;= x+y</p>
+<p>x &lt; x+y</p>
+</td>
+<td>
+<p>('a'+1) &lt; c</p>
+<p>((-i)-(5*j)) &gt;= (k+1)</p>
+<p>(3 &lt; j) &lt; 5</p>
+<p>(x-3.333) &lt;= (x+y)</p>
+<p>x &lt; (x+y)</p>
+</td>
+<td>
+<p>1</p>
+<p>0</p>
+<p>1</p>
+<p>1</p>
+<p>0</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="MARGIN-LEFT: 2em;">&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int xx = -1;<br />
+&nbsp;&nbsp;&nbsp; unsigned int yy = 1;<br />
+<br />
+&nbsp;&nbsp;&nbsp; if (xx &lt; yy)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "xx &lt; yy" &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; else<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "xx &gt;= yy" &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; char c = 'w';<br />
+&nbsp;&nbsp;&nbsp; int i = 1, j = 2, k = -7;<br />
+&nbsp;&nbsp;&nbsp; double x = 7e+33, y = 0.1;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; ('a' + 1 &lt; c) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; (-i-5*j &gt;= k+1) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; (3 &lt; j &lt; 5) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; (x-3.333 &lt;= x+y) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; (x &lt; x+y) &lt;&lt; endl;<br />
+}</li>
+</ol>
+<ul>
+<li>
+<h5>등가연산자<sup class="tocAnchorContainer"><a href="#toc_13" title="toc_13" class="anchor" id="toc_13" >#</a></sup></h5>
+</li>
+</ul>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>== &nbsp; !=</li>
+</ol>
+<p style="MARGIN-LEFT: 2em;">&nbsp;</p>
+<table style="MARGIN-LEFT: 2em;">
+<tbody>
+<tr style="MARGIN-LEFT: 4em;">
+<td>
+<p>&nbsp;&nbsp; char c = 'w';</p>
+<p>&nbsp;&nbsp; int i = 1, j = 2, k = -7;</p>
+<p>&nbsp;&nbsp; double x = 7e+33, y = 0.1;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="dataTable2" style="MARGIN-LEFT: 2em;">
+<thead>
+<tr>
+<th>
+<p>수식</p>
+</th>
+<th>
+<p>연산 우선순위와 결합성</p>
+</th>
+<th>
+<p>수식의 결과</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<p>'v' == c-1</p>
+<p>i+j+k == -2 * j</p>
+<p>k == j-9 == i</p>
+<p>x+y != x*y</p>
+<p>x != x + y</p>
+<p>1 &lt; 2 == 3 &lt; 4</p>
+</td>
+<td>
+<p>'v' == (c-1)</p>
+<p>((i+j)+k) == ((-2)*j)</p>
+<p>(k == (i-9)) == i</p>
+<p>(x+y) != (x*y)</p>
+<p>x != (x+y)</p>
+<p>(1 &lt; 2) == (3 , 4)</p>
+</td>
+<td>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>0</p>
+<p>1</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int ii = 0, jj = 0;<br />
+<br />
+&nbsp;&nbsp;&nbsp; if (ii = jj)&nbsp; // 상당한 주의가 필요. 논리적 오류<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "i = j" &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; if (ii == jj)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "i == j" &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; char c = 'w';<br />
+&nbsp;&nbsp;&nbsp; int i = 1, j = 2, k = -7;<br />
+&nbsp;&nbsp;&nbsp; double x = 7e+33, y = 0.1;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; ('v' == c-1) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; (i+j+k == -2 * j) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; (k == j-9 == i) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; (x+y != x*y) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; (x != x + y) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; (1 &lt; 2 == 3 &lt; 4) &lt;&lt; endl;<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<h3>논리 연산자(Logic Operators)<sup class="tocAnchorContainer"><a href="#toc_14" title="toc_14" class="anchor" id="toc_14" >#</a></sup></h3>
+<ul>
+<li>이항연산자</li>
+<li>오퍼랜드는 산술형태이거나 Pointer</li>
+<li>연산결과는 0 또는 1</li>
+<li>결합순서는 --&gt; 이다</li>
+<li>
+<h5>논리부정 (Logical Negation : NOT) : !<sup class="tocAnchorContainer"><a href="#toc_15" title="toc_15" class="anchor" id="toc_15" >#</a></sup></h5>
+<ul>
+<li>오퍼랜드가 참이면 연산결과는 0</li>
+<li>오퍼랜드가 거짓이면 연산결과는 1</li>
+</ul>
+</li>
+</ul>
+<table style="MARGIN-LEFT: 2em;">
+<tbody>
+<tr style="MARGIN-LEFT: 4em;">
+<td>
+<p>&nbsp;&nbsp; char c = 'M';</p>
+<p>&nbsp;&nbsp; int i = 7, j = 7;</p>
+<p>&nbsp;&nbsp; double x = 0.0, y = 2.3;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="dataTable2" style="MARGIN-LEFT: 2em;">
+<thead>
+<tr>
+<th>
+<p>수식</p>
+</th>
+<th>
+<p>연산 우선순위와 결합성</p>
+</th>
+<th>
+<p>수식의 결</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<p>!c</p>
+<p>!(i - j)</p>
+<p>!i - j</p>
+<p>! - i - j</p>
+<p>x * !j</p>
+<p>!x * !j</p>
+<p>x / !j</p>
+<p>x / !!j</p>
+<p>!!x</p>
+<p>!!!x</p>
+</td>
+<td>
+<p>!c</p>
+<p>!(i - j)</p>
+<p>(!i) - j</p>
+<p>(!(- i)) - j</p>
+<p>x * (!j)</p>
+<p>(!x) * (!j)</p>
+<p>x / (!j)</p>
+<p>x / ((!(!j))</p>
+<p>!(!x)</p>
+<p>!(!(!x))</p>
+</td>
+<td>
+<p>0</p>
+<p>1</p>
+<p>-7</p>
+<p>-7</p>
+<p>0.0</p>
+<p>0</p>
+<p>에러</p>
+<p>0.0</p>
+<p>0</p>
+<p>1</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<h5>논리곱(AND)과 논리합(OR) : &amp;&amp;&nbsp;&nbsp; ||<sup class="tocAnchorContainer"><a href="#toc_16" title="toc_16" class="anchor" id="toc_16" >#</a></sup></h5>
+<ul>
+<li>논리연산의 결과값</li>
+</ul>
+</li>
+</ul>
+<table class="dataTable2" style="MARGIN-LEFT: 2em;">
+<thead>
+<tr>
+<th>expr1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; expr2</th>
+<th>expr1 &amp;&amp; exp2</th>
+<th>expr1 || expr2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>거짓(zero)&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; 거짓(zero)</th>
+<td style="TEXT-ALIGN: center;">0</td>
+<td style="TEXT-ALIGN: center;">0</td>
+</tr>
+<tr>
+<th>거짓(zero)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;참(nonzero)</th>
+<td style="TEXT-ALIGN: center;">0</td>
+<td style="TEXT-ALIGN: center;">1</td>
+</tr>
+<tr>
+<th>참(nonzero)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;거짓(zero)</th>
+<td style="TEXT-ALIGN: center;">0</td>
+<td style="TEXT-ALIGN: center;">1</td>
+</tr>
+<tr>
+<th>참(nonzero)&nbsp;&nbsp;&nbsp;&nbsp; 참(nonzero)</th>
+<td style="TEXT-ALIGN: center;">1</td>
+<td style="TEXT-ALIGN: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p style="MARGIN-LEFT: 2em;">&nbsp;</p>
+<table style="MARGIN-LEFT: 2em;">
+<tbody>
+<tr style="MARGIN-LEFT: 4em;">
+<td>
+<p>&nbsp;&nbsp; char c = 'w';</p>
+<p>&nbsp;&nbsp; int i = 3, j = 3, k = 3;</p>
+<p>&nbsp;&nbsp; double x = 0.0, y = 2.3;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="dataTable2" style="MARGIN-LEFT: 2em;">
+<thead>
+<tr>
+<th>
+<p>수식</p>
+</th>
+<th>
+<p>연산 우선순위와 결합성</p>
+</th>
+<th>
+<p>수식의 결</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<p>i &amp;&amp; j &amp;&amp; k</p>
+<p>x &amp;&amp; j || j -3</p>
+<p>x || i &amp;&amp; j-3</p>
+<p>i&lt;j &amp;&amp; x&lt;y</p>
+<p>i&lt;j || x&lt;y</p>
+<p>i==j &amp;&amp; x&lt;=y</p>
+<p>x!=y &amp;&amp; j+1==!k+4</p>
+<p>'A'&lt;=c &amp;&amp; c&lt;='Z'</p>
+<p>c-1 == 'v' || c+1 == 'v'</p>
+<p>i==2 || j==4 || k==6</p>
+</td>
+<td>
+<p>i &amp;&amp; j &amp;&amp; k</p>
+<p>x &amp;&amp; j || j -3</p>
+<p>x || i &amp;&amp; j-3</p>
+<p>i&lt;j &amp;&amp; x&lt;y</p>
+<p>i&lt;j || x&lt;y</p>
+<p>i==j &amp;&amp; x&lt;=y</p>
+<p>x!=y &amp;&amp; j+1==!k+4</p>
+<p>'A'&lt;=c &amp;&amp; c&lt;='Z'</p>
+<p>c-1 == 'v' || c+1 == 'v'</p>
+<p>i==2 || j==4 || k==6</p>
+</td>
+<td>
+<p>1</p>
+<p>0</p>
+<p>0</p>
+<p>0</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+<p>0</p>
+<p>1</p>
+<p>0</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>Short Circuit<sup class="tocAnchorContainer"><a href="#toc_17" title="toc_17" class="anchor" id="toc_17" >#</a></sup></h5>
+<ul>
+<li>&amp;&amp; 연산자 좌변의 수식이 거짓이면 우변이 연산되지 않는다.</li>
+<li>|| 연산자 좌변의 수식이 참이면 우변은 연산되지 않는다.</li>
+<li>따라서, 논리연산에 산술식이나 함수를 포함하는것은 바람직하지 않다.</li>
+</ul>
+<ol class="code">
+<li>if (a &amp;&amp; (b = foo())) // (X)&nbsp;</li>
+<li>b = foo();</li>
+<li>if (a &amp;&amp; b)&nbsp; // (0)</li>
+</ol>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>/* No devide zero error 1 */</li>
+<li>if (no != 0)</li>
+<li>&nbsp;&nbsp; if ((value / no) == test)&nbsp; cout &lt;&lt; "OK";</li>
+<li>&nbsp;</li>
+<li>/* No devide zero error 2 */</li>
+<li>if (no &amp;&amp; ((value / no) == test))</li>
+<li>&nbsp;&nbsp; cout &lt;&lt; "OK";</li>
+</ol>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int i = 0, j = 0, x, y;<br />
+<br />
+&nbsp;&nbsp;&nbsp; x = 0 &amp;&amp; (i = j = 99);<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; i &lt;&lt; j &lt;&lt; x &lt;&lt; endl;&nbsp; // 0 0 0<br />
+<br />
+&nbsp;&nbsp;&nbsp; y = 1 || (i = ++j);<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; i &lt;&lt; j &lt;&lt; y &lt;&lt; endl;&nbsp; // 0 0 1<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<h3>Bit 연산자<sup class="tocAnchorContainer"><a href="#toc_18" title="toc_18" class="anchor" id="toc_18" >#</a></sup></h3>
+<ul>
+<li>오퍼랜드는 정수적형(integral)이다</li>
+<li>결합순서는 --&gt; 이다. ( 단, ~는 &lt;-- )</li>
+<li>
+<h5>Bit 연산자 (bitwise logical operators) :&nbsp; &amp;&nbsp;&nbsp; |&nbsp;&nbsp; ^<sup class="tocAnchorContainer"><a href="#toc_19" title="toc_19" class="anchor" id="toc_19" >#</a></sup></h5>
+<ul>
+<li>&amp; : 비트곱 연산자 (bitwise AND)</li>
+<li>| : 비트합 연산자 (bitwise inclusive OR)</li>
+<li>^ : 비트차 연산자 (bitwise exclusive OR)</li>
+</ul>
+</li>
+<li>
+<h5>1의 보수 연산자 (Bitwise Complement) :&nbsp; ~<sup class="tocAnchorContainer"><a href="#toc_20" title="toc_20" class="anchor" id="toc_20" >#</a></sup></h5>
+<ul>
+<li>연산결과는 오퍼랜드의 1의 보수가 된다.</li>
+</ul>
+</li>
+<li>
+<h5>Bit 연산자의 연산 결과<sup class="tocAnchorContainer"><a href="#toc_21" title="toc_21" class="anchor" id="toc_21" >#</a></sup></h5>
+</li>
+<li>
+<table class="dataTable2">
+<thead>
+<tr>
+<th>x&nbsp;&nbsp; y</th>
+<th>x &amp; y</th>
+<th>x | y</th>
+<th>x ^ y</th>
+<th>~x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: center;">
+<p>0&nbsp;&nbsp; 0</p>
+<p>1&nbsp;&nbsp; 0</p>
+<p>0&nbsp;&nbsp; 1</p>
+<p>1&nbsp;&nbsp; 1</p>
+</td>
+<td style="TEXT-ALIGN: center;">
+<p>0</p>
+<p>0</p>
+<p>0</p>
+<p>1</p>
+</td>
+<td style="TEXT-ALIGN: center;">
+<p>0</p>
+<p>1</p>
+<p>1</p>
+<p>1</p>
+</td>
+<td style="TEXT-ALIGN: center;">
+<p>0</p>
+<p>1</p>
+<p>1</p>
+<p>0</p>
+</td>
+<td style="TEXT-ALIGN: center;">
+<p>1</p>
+<p>0</p>
+<p>1</p>
+<p>0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<h5>스타일이나 플래그 지정에 자주 쓰이는 비트 연산<sup class="tocAnchorContainer"><a href="#toc_22" title="toc_22" class="anchor" id="toc_22" >#</a></sup></h5>
+</li>
+</ul>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+// style이나 flag 지정에 비트연산이 자주 등장한다.<br />
+#define STYLE_ONE&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 0x0001<br />
+#define STYLE_TWO&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 0x0002<br />
+#define STYLE_THREE&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 0x0004<br />
+#define STYLE_FOUR&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 0x0008<br />
+#define STYLE_FIVE&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 0x0010<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int myStyle = 0;<br />
+<br />
+&nbsp;&nbsp;&nbsp; myStyle = STYLE_ONE | STYLE_TWO;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "my style has style_one ? : " &lt;&lt; (myStyle &amp; STYLE_ONE) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "my style has style_three ? : " &lt;&lt; (myStyle &amp; STYLE_THREE) &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; // add style<br />
+&nbsp;&nbsp;&nbsp; myStyle |= STYLE_THREE;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "my style has style_three ? : " &lt;&lt; (myStyle &amp; STYLE_THREE) &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; // remove style<br />
+&nbsp;&nbsp;&nbsp; myStyle &amp;= ~STYLE_ONE;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "my style has style_one ? : " &lt;&lt; (myStyle &amp; STYLE_ONE) &lt;&lt; endl;<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>Shift 연산자 :&nbsp; &lt;&lt;&nbsp;&nbsp; &gt;&gt;<sup class="tocAnchorContainer"><a href="#toc_23" title="toc_23" class="anchor" id="toc_23" >#</a></sup></h5>
+<ul>
+<li>우변 오퍼랜드에 의해 주어지는 값만큼 좌변 오퍼랜드를 좌측(&lt;&lt;) 또는 우측(&gt;&gt;)으로 bit 이동</li>
+<li>E1 &lt;&lt; E2 --&gt; E1 * 2<sup>E2</sup></li>
+<li>E1 &gt;&gt; E2 --&gt; E1 / 2<sup>E2</sup></li>
+<li>Overflow or Underflow에 대해서 정의되지 않는다.</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+// 2진 출력<br />
+void binary(int num)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; for(int i = 15; 0 &lt;= i; --i) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; printf("%1u", (num&gt;&gt;i)&amp;1);<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; endl;<br />
+}<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int i = 16;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; binary(i);<br />
+&nbsp;&nbsp;&nbsp; i = i &gt;&gt; 3;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; binary(i);<br />
+&nbsp;&nbsp;&nbsp; i = 16;<br />
+&nbsp;&nbsp;&nbsp; i = i &lt;&lt; 3;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; binary(i);<br />
+<br />
+&nbsp;&nbsp;&nbsp; int j = -16;&nbsp;&nbsp;&nbsp; binary(j);<br />
+&nbsp;&nbsp;&nbsp; j = j &gt;&gt; 3;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; binary(j);<br />
+&nbsp;&nbsp;&nbsp; j = -16;<br />
+&nbsp;&nbsp;&nbsp; j = j &lt;&lt; 3;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; binary(j);<br />
+<br />
+&nbsp;&nbsp;&nbsp; unsigned int u = 65513;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; binary(u);<br />
+&nbsp;&nbsp;&nbsp; u = u &gt;&gt; 3;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; binary(u);<br />
+&nbsp;&nbsp;&nbsp; u = 65513;<br />
+&nbsp;&nbsp;&nbsp; u = u &lt;&lt; 3;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; binary(u);<br />
+<br />
+&nbsp;&nbsp;&nbsp; // x의 값을 두배하라<br />
+&nbsp;&nbsp;&nbsp; int x = 3;<br />
+&nbsp;&nbsp;&nbsp; x = x * 2;<br />
+&nbsp;&nbsp;&nbsp; x = x + x;<br />
+&nbsp;&nbsp;&nbsp; x = x &lt;&lt; 1;&nbsp; // 실행속도가 가장 빠름<br />
+}</li>
+<li>
+<p>&nbsp;</p>
+</li>
+</ol>
+<ul>
+<li>
+<table class="dataTable2">
+<thead>
+<tr>
+<th>원래상태</th>
+<th>3칸 우측 이동</th>
+<th>3칸 좌측 이동</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: center;">
+<p>16 :&nbsp;&nbsp;&nbsp;&nbsp; 0000000000010000</p>
+<p>-16 :&nbsp;&nbsp;&nbsp; 1111111111110000</p>
+<p>65513:&nbsp; 1111111111101001</p>
+</td>
+<td style="TEXT-ALIGN: center;">
+<p>0000000000000010</p>
+<p>1111111111111110</p>
+<p>0001111111111101</p>
+</td>
+<td style="TEXT-ALIGN: center;">
+<p>0000000010000000</p>
+<p>1111111110000000</p>
+<p>1111111101001000</p>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>&nbsp;</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int bitcount(unsigned char);<br />
+<br />
+&nbsp;&nbsp;&nbsp; unsigned char ch = 'A';<br />
+&nbsp;&nbsp;&nbsp; int count;<br />
+<br />
+&nbsp;&nbsp;&nbsp; count = bitcount(ch);<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "count = " &lt;&lt; count &lt;&lt; endl;<br />
+}<br />
+<br />
+int bitcount(unsigned char ch)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int count;<br />
+<br />
+&nbsp;&nbsp;&nbsp; for (count = 0; ch != 0; ch &gt;&gt;= 1) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (ch&amp;1)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; count++;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+<br />
+&nbsp;&nbsp;&nbsp; return count;<br />
+}</li>
+</ol>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h3>Pointer 연산자<sup class="tocAnchorContainer"><a href="#toc_24" title="toc_24" class="anchor" id="toc_24" >#</a></sup></h3>
+<ul>
+<li>
+<h5>간접 연산자 (Indirection Operator) :&nbsp; *<sup class="tocAnchorContainer"><a href="#toc_25" title="toc_25" class="anchor" id="toc_25" >#</a></sup></h5>
+<ul>
+<li>단항연산자</li>
+<li>오퍼랜드가 가리키는 대상체나 함수를 리턴한다.</li>
+<li>결합순서는 &lt;-- 이다.</li>
+</ul>
+</li>
+<li>
+<h5>주소연산자 (Address Operator) :&nbsp; &amp;<sup class="tocAnchorContainer"><a href="#toc_26" title="toc_26" class="anchor" id="toc_26" >#</a></sup></h5>
+<ul>
+<li>단항연산자</li>
+<li>오퍼랜드의 주소값을 취한다.</li>
+<li>오퍼랜드는 좌변값(lvalue)을 가져야 한다.</li>
+<li>결합순서는 &lt;-- 이다.</li>
+</ul>
+</li>
+</ul>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int index, *ptr1, *ptr2;<br />
+<br />
+&nbsp;&nbsp;&nbsp; index = 99;<br />
+&nbsp;&nbsp;&nbsp; ptr1 = &amp;index;<br />
+&nbsp;&nbsp;&nbsp; ptr2 = ptr1;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; index &lt;&lt; '\t' &lt;&lt; *ptr1 &lt;&lt; '\t' &lt;&lt; *ptr2 &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; *ptr1 = 191;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; index &lt;&lt; '\t' &lt;&lt; *ptr1 &lt;&lt; '\t' &lt;&lt; *ptr2 &lt;&lt; endl;<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<h3>형 관련 연산자<sup class="tocAnchorContainer"><a href="#toc_27" title="toc_27" class="anchor" id="toc_27" >#</a></sup></h3>
+<ul>
+<li>
+<h5>Cast 연산자 : (type-name) 또는 type-name(항)<sup class="tocAnchorContainer"><a href="#toc_28" title="toc_28" class="anchor" id="toc_28" >#</a></sup></h5>
+<ul>
+<li>명시적인 형 변환이 필요할 때 쓰인다.</li>
+<li>오퍼랜드로 산술형 데이터와 수식을 취한다.</li>
+<li>결합순서는 &lt;-- 이다.</li>
+<li>(char) (char*) (int) (int*) (double) (double*) (void) (void*) ...</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int v1, v2, v3;<br />
+<br />
+&nbsp;&nbsp;&nbsp; v1 = 1.8 + 1.9;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // implicit conversion<br />
+&nbsp;&nbsp;&nbsp; v2 = (int)(1.8 + 1.9);&nbsp;&nbsp;&nbsp; // explicit conversion<br />
+&nbsp;&nbsp;&nbsp; v3 = (int)1.8 + (int)1.9;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; v1 &lt;&lt; " " &lt;&lt; v2 &lt;&lt; " " &lt;&lt; v3 &lt;&lt; endl;<br />
+}</li>
+</ol>
+<ul>
+<li>&nbsp;</li>
+</ul>
+<ol class="code">
+<li>// 1에서 100까지 더하여 합과 평균을 출력하는 프로그램<br />
+#include &lt;iostream&gt;<br />
+using namespace std;<br />
+const int max_num = 100;<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int sum = 0;<br />
+&nbsp;&nbsp;&nbsp; float average;<br />
+&nbsp;&nbsp;&nbsp; for (int i = 1; i &lt;= max_num; i++) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; sum += i;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; average = (float)sum / max_num;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Sum = " &lt;&lt; sum &lt;&lt; "\tAverage = " &lt;&lt; average &lt;&lt; endl;<br />
+}</li>
+</ol>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>sizeof 연산자 : sizeof(expr) 또는 sizeof(type)<sup class="tocAnchorContainer"><a href="#toc_29" title="toc_29" class="anchor" id="toc_29" >#</a></sup></h5>
+<ul>
+<li>오퍼랜드 형태의 대상체를 저장하는데 필요한 Byte 수를 나타낸다.</li>
+<li>결과는 부호없는 정수상수이다.</li>
+<li>결합순서는 &lt;== 이다.</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; char&nbsp;&nbsp; ch, *pch = &amp;ch;<br />
+&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp; i, arr[50], *pi = arr;<br />
+&nbsp;&nbsp;&nbsp; float&nbsp; f, *pf = &amp;f;<br />
+&nbsp;&nbsp;&nbsp; double d, *pd = &amp;d;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(char) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(char) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(short) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(short) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(int) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(int) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(unsigned) : "&nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(unsigned) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(float) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(float) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(double) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(double) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(long double) : " &lt;&lt; sizeof(long double) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(-1) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(-1) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(0xff) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(0xff) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(65535) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(65535) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(32767) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(32767) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(ch) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(ch) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(i) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(i) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(arr) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(arr) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(f) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(f) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(d) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(d) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(1+1.) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(1+1.) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(1+1L) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(1+1L) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof('\\xff') : "&nbsp;&nbsp;&nbsp; &lt;&lt; sizeof('\xff') &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof('a') : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof('a') &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof('ab') : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof('ab') &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(pch) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(pch) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(pi) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(pi) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(pf) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(pf) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "sizeof(pd) : "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;&lt; sizeof(pd) &lt;&lt; endl;<br />
+}</li>
+</ol>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>조건연산자 (Conditional Operator) :&nbsp; ? :<sup class="tocAnchorContainer"><a href="#toc_30" title="toc_30" class="anchor" id="toc_30" >#</a></sup></h5>
+<ul>
+<li>형식</li>
+</ul>
+<ol class="code">
+<li>expr1 ? expr2 : expr3;</li>
+</ol>
+<ul>
+<li>3항 연산자</li>
+<li>제1 오퍼랜드(expr1)의 결과가 참이면 expr2를, 거짓이면 expr3의 수식값을 취한다.</li>
+<li>결합순서는 &lt;-- 이다.</li>
+<li>
+<table class="dataTable2">
+<tbody>
+<tr>
+<td>
+<p>&nbsp; if (x &gt; y)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; max = x;</p>
+<p>&nbsp; else</p>
+<p>&nbsp;&nbsp; &nbsp; max = y;</p>
+</td>
+<td>&nbsp; max = (x &gt; y) ? x : y;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>&nbsp;</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int i = 10, j = 20, k = 30;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "The larger value of " &lt;&lt; i &lt;&lt; " and " &lt;&lt; j &lt;&lt; " is " &lt;&lt; ((i&gt;j)?i:j) &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "The value of " &lt;&lt; i &lt;&lt; " is" &lt;&lt; ((i%2)? " ": " not ") &lt;&lt; "odd" &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; int max = ((i&gt;j) ? ((i&gt;k)?i:k): ((j&gt;k)?j:k));<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "The larger value of " &lt;&lt; i &lt;&lt; ", " &lt;&lt; j &lt;&lt; " and " &lt;&lt; k &lt;&lt; " is " &lt;&lt; max &lt;&lt; endl;<br />
+}</li>
+</ol>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>순차연산자 (Comma Operator) :&nbsp; ,<sup class="tocAnchorContainer"><a href="#toc_31" title="toc_31" class="anchor" id="toc_31" >#</a></sup></h5>
+<ul>
+<li>이항연산자</li>
+<li>오퍼랜드는 임의의 수식이다.</li>
+<li>왼쪽에서 오른쪽으로 값을 구하고 왼쪽 수식의 값은 무시된다.</li>
+<li>결과의 형태와 값은 오른쪽 오퍼랜드에 따른다.</li>
+<li>우선순위가 제일 낮다.</li>
+<li>결합순서는 --&gt; 이다.</li>
+<li>
+<table class="dataTable2">
+<tbody>
+<tr>
+<td>
+<p>a = a + 1;</p>
+<p>b = b + 1;</p>
+<p>c = c + 1;</p>
+</td>
+<td>
+<p style="TEXT-ALIGN: center;">=</p>
+</td>
+<td>
+<p>(a=a+1, b=b+1, c=c+1);</p>
+<p>(a++, b++, c++);</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>a = a + 1;</p>
+<p>b = b + a;</p>
+<p>c = c + b;</p>
+</td>
+<td style="TEXT-ALIGN: center;">=</td>
+<td>
+<p>(a=a+1, b=b+a, c=c+b);</p>
+<p>(a++, b+=a, c+=b);</p>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>&nbsp;</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int cnt, j, k;<br />
+&nbsp;&nbsp;&nbsp; int even_sum=0, odd_sum=0;<br />
+<br />
+&nbsp;&nbsp;&nbsp; for (cnt=0, j=2, k=1; cnt&lt;100; ++cnt, j+=2, k+=2) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; even_sum += j;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; odd_sum += k;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "even_sum =&gt; " &lt;&lt; even_sum &lt;&lt; endl &lt;&lt; "odd_sum&nbsp; =&gt; " &lt;&lt; odd_sum &lt;&lt; endl;<br />
+}</li>
+</ol>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h3>연산자 우선순위<sup class="tocAnchorContainer"><a href="#toc_32" title="toc_32" class="anchor" id="toc_32" >#</a></sup></h3>
+<p><img title="303_1.PNG" class="attachment" src="5717932_303_1.PNG" alt="303_1.PNG" /></p>
+<p>&nbsp;</p>
+<h3>Workshop<sup class="tocAnchorContainer"><a href="#toc_33" title="toc_33" class="anchor" id="toc_33" >#</a></sup></h3>
+<ol>
+<li>
+<p>다음 조건을 나타내는 식을 코딩하라</p>
+<ul>
+<li>number는 1보다 크거나 같고 9보다 작다.</li>
+<li>ch는 q도 k도 아니다. (q, k는 문자)</li>
+<li>n은 1과 9 사이에 있으나 5는 아니다.</li>
+<li>
+<p>k는 1과 9 사이에 있지 않다.</p>
+<p>&nbsp;</p>
+</li>
+</ul>
+</li>
+<li>
+<p>4로 나누어지면서 100으로는 나누어지지 않거나 400으로 나누어지는 해는 윤년이다. year를 입력받아 윤년이면 1을 아니면 0을 출력하는 프로그램을 작성하라.</p>
+<p>&nbsp;</p>
+</li>
+<li>
+<p>주소연산자와 포인터 변수를 사용하여 a변수에 45, b변수에 50을 대입하여 a + b를 구하는 프로그램을 작성하라.</p>
+<p>&nbsp;</p>
+</li>
+<li>다음 프로그램의 실행 결과는 ?</li>
+</ol>
+<ol class="code">
+<li>void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int a, b, c, x, y;<br />
+&nbsp;&nbsp;&nbsp; a = 3, b = -4, c = 5;<br />
+&nbsp;&nbsp;&nbsp; x = 2 + a * ++b / c;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; x &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; y = 5 - + ++a % (5 + b);&nbsp;&nbsp;&nbsp; cout &lt;&lt; y &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; b = c = 2;<br />
+&nbsp;&nbsp;&nbsp; a = ++b + c++;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a &lt;&lt; b &lt;&lt; c &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; a = b-- + ++c;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a &lt;&lt; b &lt;&lt; c &lt;&lt; endl;<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+	<!-- SPRINGNOTE::PAGE_CONTENT_END -->
+
+
+
+</body>
+</html>
