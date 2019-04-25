@@ -1,1 +1,909 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
 
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>304.제어구조</title>
+
+</head>
+
+<body class="xhtmlEditorBody background_no" id="viewXhtml_body">
+<h1 class="printNxhtmlTitle hentry" style="display:none;"><a href="http://mie.springnote.com/pages/9972978" rel="bookmark">304.제어구조</a></h1>
+
+
+	<!-- SPRINGNOTE::PAGE_CONTENT_START -->
+	<div id="toc" style="BORDER-BOTTOM: tan 1px solid; BORDER-LEFT: tan 1px solid; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,250); PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: tan 1px solid; BORDER-RIGHT: tan 1px solid; PADDING-TOP: 2px;">
+<p><strong>목차</strong></p>
+<hr />
+<ol>
+<li><a href="#toc_0" title="toc_0" class="external">문장(Statement)의 종류</a></li>
+<li><a href="#toc_1" title="toc_1" class="external">선택문 (Selection Statement)</a>
+<ol>
+<li><a href="#toc_2" title="toc_2" class="external">if statement</a></li>
+<li><a href="#toc_3" title="toc_3" class="external">switch statement</a></li>
+</ol>
+</li>
+<li><a href="#toc_4" title="toc_4" class="external">반복문 (Iteration statement)</a>
+<ol>
+<li><a href="#toc_5" title="toc_5" class="external">while statement</a></li>
+<li><a href="#toc_6" title="toc_6" class="external">do-while statement</a></li>
+<li><a href="#toc_7" title="toc_7" class="external">for statement</a></li>
+<li><a href="#toc_8" title="toc_8" class="external">while 문과 for 문의 비교</a></li>
+</ol>
+</li>
+<li><a href="#toc_9" title="toc_9" class="external">분기문</a>
+<ol>
+<li><a href="#toc_10" title="toc_10" class="external">break statement</a></li>
+<li><a href="#toc_11" title="toc_11" class="external">continue statement</a></li>
+<li><a href="#toc_12" title="toc_12" class="external">goto statement</a></li>
+</ol>
+</li>
+<li><a href="#toc_13" title="toc_13" class="external">Workshop</a></li>
+</ol>
+</div>
+<p>&nbsp;</p>
+<h3>문장(Statement)의 종류<sup class="tocAnchorContainer"><a href="#toc_0" title="toc_0" class="anchor" id="toc_0" >#</a></sup></h3>
+<ul>
+<li>
+<p>표식문 (Labeld Statement)</p>
+<ul>
+<li>문장 앞에 표식(label)이 붙는다.</li>
+<li>goto문의 이동위치 지정에 사용</li>
+<li>switch문과 함께 쓰이는 cas, default label이 있다.</li>
+</ul>
+</li>
+<li>
+<p>수식문 (Expression Statement)</p>
+<ul>
+<li>; 으로 끝나는 대부분의 문장 (치환문, 함수호출 ...)</li>
+<li>수식이 없는 문장을 공문(null statement)이라 한다.</li>
+</ul>
+</li>
+<li>
+<p>복합문 (Compund Statement)</p>
+<ul>
+<li>한개 이상의 문들의 나열이 { 와 }로 둘러싸인 형태로 block이라고도 한다.</li>
+<li>함수 정의 구조도 일종의 복합문이다.</li>
+</ul>
+</li>
+<li>
+<p>선택문 (Selection Statement)</p>
+<ul>
+<li>if, if else, switch</li>
+</ul>
+</li>
+<li>
+<p>반복문 (Iteration Statement)</p>
+<ul>
+<li>while, do while, for</li>
+</ul>
+</li>
+<li>
+<p>분기문 (Jump Statement)</p>
+<ul>
+<li>goto, continue, break, return</li>
+</ul>
+</li>
+<li>
+<p>선언문 (Declaration Statement)</p>
+<ul>
+<li>프로그램에서 사용하고자 하는 대상의 명칭을 지정한다.</li>
+<li>C++에서는 실행문의 위치에서도 선언이 가능하다.</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h3>선택문 (Selection Statement)<sup class="tocAnchorContainer"><a href="#toc_1" title="toc_1" class="anchor" id="toc_1" >#</a></sup></h3>
+<ul>
+<li>
+<h5>if statement<sup class="tocAnchorContainer"><a href="#toc_2" title="toc_2" class="anchor" id="toc_2" >#</a></sup></h5>
+<ol class="code">
+<li>
+<p>[형식 1]</p>
+<p><strong>if (expr)</strong></p>
+<p><strong>&nbsp;&nbsp; block</strong></p>
+</li>
+</ol>
+<ul>
+<li>expr이 참(nonezero)일 때만 block을 수행한다.</li>
+<li>block이 둘 이상의 단문으로 구성시는 복문으로 만든다.</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; unsigned long n, j;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Enter a number : ";<br />
+&nbsp;&nbsp;&nbsp; cin &gt;&gt; n;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // get number to test<br />
+<br />
+&nbsp;&nbsp;&nbsp; for (j=2; j&lt;=n/2; j++) {&nbsp;&nbsp;&nbsp; // devide by every interger from<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (n%j == 0) {&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // 2 on up; if remainder is 0,<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "It's not prime; divisible by " &lt;&lt; j &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; exit(0);&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // exit from the program<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp; } // end of for<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "It's prime\n";<br />
+} // end of main</li>
+</ol>
+<ul>
+<li>&nbsp;</li>
+</ul>
+<ol class="code">
+<li>[형식 2]</li>
+<li><strong>if (expr)</strong></li>
+<li><strong>&nbsp;&nbsp;&nbsp;block1</strong></li>
+<li><strong>else</strong></li>
+<li><strong>&nbsp;&nbsp; block2</strong></li>
+</ol>
+<ul>
+<li>expr이 참이면 block1을, 거짓이면 block2를 수행한다.</li>
+<li>block1이 2개 이상의 문장으로 구성되었을 시는 필히 { }로 복문을 만들어 주어야 한다.</li>
+<li>block2가 2개 이상의 문장으로 구성되었을 시는 { }의 유무에 따라 논리의 흐름이 달라진다.</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int val_read;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Please enter an integer : ";<br />
+&nbsp;&nbsp;&nbsp; cin &gt;&gt; val_read;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // get a value<br />
+<br />
+&nbsp;&nbsp;&nbsp; /* classify val_read as positive, negative, or zero */<br />
+&nbsp;&nbsp;&nbsp; if (val_read)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (val_read &lt; 0)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "Negative\n";<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "Positive\n";<br />
+&nbsp;&nbsp;&nbsp; else // if val_read is false, val_read == 0<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "Number is zero\n";<br />
+}</li>
+</ol>
+<ul>
+<li>else는 else를 갖지 않는 가장 가까운 앞쪽의 if와 짝을 이룬다.</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int a, b, c;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Enter a, b, and c : ";<br />
+&nbsp;&nbsp;&nbsp; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;<br />
+&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp; if (a == b) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;if (b == c)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;cout &lt;&lt; "a, b, and c are the same";<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; else<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;cout &lt;&lt; "a and b are different";<br />
+<br />
+&nbsp;&nbsp;&nbsp; if (a == b)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;if (b == c)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;cout &lt;&lt; "a, b, and c are the same";<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;else<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;cout &lt;&lt; "b and c are different";<br />
+}</li>
+</ol>
+<ul>
+<li>&nbsp;</li>
+</ul>
+<ol class="code">
+<li>[형식 3]</li>
+<li><strong>if (expr1)</strong></li>
+<li><strong>&nbsp;&nbsp; statement 1</strong></li>
+<li><strong>else if (expr2)</strong></li>
+<li><strong>&nbsp;&nbsp; statement 2</strong></li>
+<li><strong>else if (expr3)</strong></li>
+<li><strong>&nbsp;&nbsp; statement 3</strong></li>
+<li><strong>else</strong></li>
+<li><strong>&nbsp;&nbsp; statement 4</strong></li>
+</ol>
+<ul>
+<li>&nbsp;</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int score;<br />
+&nbsp;&nbsp;&nbsp; char grade;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cin &gt;&gt; score;<br />
+&nbsp;&nbsp;&nbsp; if (90 &lt;= score)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;grade = 'A';<br />
+&nbsp;&nbsp;&nbsp; else if (80 &lt;= score &amp;&amp; score &lt; 90)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;grade = 'B';<br />
+&nbsp;&nbsp;&nbsp; else if (70 &lt;= score &amp;&amp; score &lt; 80)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;grade = 'C';<br />
+&nbsp;&nbsp;&nbsp; else if (60 &lt;= score &amp;&amp; score &lt; 70)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;grade = 'D';<br />
+&nbsp;&nbsp;&nbsp; else<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;grade = 'F';<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "score = " &lt;&lt; score &lt;&lt; " grade = " &lt;&lt; grade &lt;&lt; endl;<br />
+}</li>
+</ol>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>// demostrate ELSE..IF with adventure program<br />
+#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; char dir = 'a';<br />
+&nbsp;&nbsp;&nbsp; int x= 10, y = 10;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Type x to exit\n";<br />
+&nbsp;&nbsp;&nbsp; while (dir != 'x')&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // until x is entered<br />
+&nbsp;&nbsp;&nbsp; {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "\nYour location is " &lt;&lt; x &lt;&lt; ", " &lt;&lt; y;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "\nEnter direction (n, s, e, w) : " &lt;&lt; flush;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cin &gt;&gt; dir;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // get character<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (dir == 'n')&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // go north<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; y--;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else if (dir == 's')&nbsp;&nbsp;&nbsp; // go south<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; y++;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else if (dir == 'e')&nbsp;&nbsp;&nbsp; // go east<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; x++;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else if (dir == 'w')&nbsp;&nbsp;&nbsp; // go west<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; x--;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+#include &lt;ctype.h&gt;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // 문자함수를 위한 기본형<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Enter text for analysis, and simulate EOF to terminate input.\n";<br />
+<br />
+&nbsp;&nbsp;&nbsp; char ch;<br />
+&nbsp;&nbsp;&nbsp; int whitespace = 0;<br />
+&nbsp;&nbsp;&nbsp; int digits = 0;<br />
+&nbsp;&nbsp;&nbsp; int chars = 0;<br />
+&nbsp;&nbsp;&nbsp; int punct = 0;<br />
+&nbsp;&nbsp;&nbsp; int others = 0;<br />
+<br />
+&nbsp;&nbsp;&nbsp; while (cin.get(ch))&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // 종료는 CtrlL+Z, Ctrl+D(Unix)<br />
+&nbsp;&nbsp;&nbsp; {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (isalpha(ch))&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // 알파벳<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; chars++;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else if (isspace(ch))&nbsp;&nbsp;&nbsp; // 공백(공백, 행바꿈, 탭, 리턴 등)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; whitespace++;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else if (isdigit(ch))&nbsp;&nbsp;&nbsp; // 십진수<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; digits++;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else if (ispunct(ch))&nbsp;&nbsp;&nbsp; // 영문자, 숫자 공백이 아닌 문자.<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; punct++;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; others++;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; chars&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;&lt; " letters, "<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;&lt; whitespace &lt;&lt; " whitespace, "<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;&lt; digits&nbsp;&nbsp;&nbsp;&nbsp; &lt;&lt; " digits, "<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;&lt; punct&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;&lt; " punctuations, "<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;&lt; others&nbsp;&nbsp;&nbsp;&nbsp; &lt;&lt; " others.\n";<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>switch statement<sup class="tocAnchorContainer"><a href="#toc_3" title="toc_3" class="anchor" id="toc_3" >#</a></sup></h5>
+<ol class="code">
+<li>[형식]</li>
+<li><strong>switch (expr) {</strong></li>
+<li><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 상수식 1 : statement 1</strong></li>
+<li><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [break];</strong></li>
+<li><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 상수식 2 : statement 2</strong></li>
+<li><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;[break];</strong></li>
+<li><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ......</strong></li>
+<li><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: statement n]</strong></li>
+<li><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;[break];</strong></li>
+</ol>
+<ul>
+<li>expr과 상수식은 정수적형(정수형이나 문자형)이다.</li>
+<li>상수식들은 한 switch문 내에서 서로 달라야 한다.</li>
+<li>&nbsp;</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int score, cond;<br />
+&nbsp;&nbsp;&nbsp; char grade;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cin &gt;&gt; score;<br />
+&nbsp;&nbsp;&nbsp; cond = score / 10;<br />
+&nbsp;&nbsp;&nbsp; switch (cond) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;case 10 :<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;case&nbsp; 9 : grade = 'A'; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;case&nbsp; 8 : grade = 'B'; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;case&nbsp; 7 : grade = 'C'; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;case&nbsp; 6 : grade = 'D'; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;default : grade = 'F'; break;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "score = " &lt;&lt; score &lt;&lt; " grade = " &lt;&lt; grade &lt;&lt; endl;<br />
+}</li>
+</ol>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>// demostrate SWITCH with adventure program<br />
+#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; char dir = 'a';<br />
+&nbsp;&nbsp;&nbsp; int x= 10, y = 10;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Type x to exit\n";<br />
+&nbsp;&nbsp;&nbsp; while (dir != 'x')&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // until x is entered<br />
+&nbsp;&nbsp;&nbsp; {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "\nYour location is " &lt;&lt; x &lt;&lt; ", " &lt;&lt; y;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "\nEnter direction (n, s, e, w) : " &lt;&lt; flush;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cin &gt;&gt; dir;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // get character<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; switch (dir) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case 'n': y--; break; &nbsp;&nbsp;&nbsp; // go north<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case 's': y++; break; &nbsp;&nbsp;&nbsp; // go south<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case 'e': x++; break; &nbsp;&nbsp;&nbsp; // go east<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case 'w': x--; break; &nbsp;&nbsp;&nbsp; // go west<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case 'x': break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; default: cout &lt;&lt; "Try again";<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; }<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<h3>반복문 (Iteration statement)<sup class="tocAnchorContainer"><a href="#toc_4" title="toc_4" class="anchor" id="toc_4" >#</a></sup></h3>
+<ul>
+<li>
+<h5>while statement<sup class="tocAnchorContainer"><a href="#toc_5" title="toc_5" class="anchor" id="toc_5" >#</a></sup></h5>
+<ol class="code">
+<li>[형식]</li>
+<li><strong>while(조건식) 실행문;</strong></li>
+</ol>
+<ul>
+<li>
+<p>조건식 :</p>
+<ul>
+<li>실행문을 반복하기 위한 조건</li>
+<li>참(nonezero) 이면 실행문을 반복해서 처리</li>
+<li>거짓(zero) 이면 while 문을 종료</li>
+<li>실행문이 둘 이상일 경우 중괄호를 사용하여 블록을 만듬</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void func1(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int count&nbsp; = 1;<br />
+&nbsp;&nbsp;&nbsp; while (count &lt;= 5)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; count &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ++count;<br />
+}<br />
+<br />
+/* while문을 사용하여 1^2+3^2+...+...의 값이 500을 넘을 때의 값 출력 */<br />
+void func2(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; short a=1, c=0;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "1^2+3^2+...+...의 값이 500을 넘을 때의 값 : ";<br />
+&nbsp;&nbsp;&nbsp; while (c &lt; 500) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; c += a * a;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; a += 2;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; c &lt;&lt; endl;<br />
+}<br />
+<br />
+#include &lt;string.h&gt;&nbsp;&nbsp;&nbsp; // 운자열 처리<br />
+void func3(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; char name[15];&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Will hold user's first name<br />
+&nbsp;&nbsp;&nbsp; int count = 0;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Will hold total charaters in name<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "What is your first name ? : ";<br />
+&nbsp;&nbsp;&nbsp; cin &gt;&gt; name;<br />
+<br />
+&nbsp;&nbsp;&nbsp; while (name[count])&nbsp;&nbsp;&nbsp; // Loop until null zero is reached.<br />
+&nbsp;&nbsp;&nbsp; { count++; }<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Your name has " &lt;&lt; count &lt;&lt; " characters.\n";<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "strlen(name) = " &lt;&lt; strlen(name);<br />
+}<br />
+<br />
+void func4(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; const int LF = 10;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // line feed code for escape key<br />
+&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp; &nbsp; channel = 2;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // channel number<br />
+&nbsp;&nbsp;&nbsp; int ch;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // character typed by user<br />
+<br />
+&nbsp;&nbsp;&nbsp; while ((ch = cin.get()) != LF) {&nbsp;&nbsp;&nbsp; // get character and exit on return key<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (47 &lt; ch &amp;&amp; ch &lt; 58)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // if it's a digit<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; channel = ch - 48;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // otherwise<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; switch (ch) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case 'u': channel++; break; // 'u' key<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case 'd': channel--; break; // 'd' key<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; default: cout &lt;&lt; "\nError"; // anything else<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "\nchannel = " &lt;&lt; channel &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cin.get();<br />
+&nbsp;&nbsp;&nbsp; }<br />
+}<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; func1();<br />
+&nbsp;&nbsp;&nbsp; func2();<br />
+&nbsp;&nbsp;&nbsp; func3();<br />
+&nbsp;&nbsp;&nbsp; func4();<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int c, i, nwhite, nother, ndigit[10];<br />
+<br />
+&nbsp;&nbsp;&nbsp; nwhite = nother = 0;<br />
+<br />
+&nbsp;&nbsp;&nbsp; for (i = 0; i &lt; 10; i++)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ndigit[i] = 0;<br />
+<br />
+&nbsp;&nbsp;&nbsp; while ((c = cin.get()) != EOF) {&nbsp;&nbsp;&nbsp; // 종료는 CtrlL+Z, Ctrl+D(Unix)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; switch (c) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case '0': case '1': case '2': case '3': case '4':<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case '5': case '6': case '7': case '8': case '9':<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ndigit[c-'0']++;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case ' ':<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case '\n':<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case '\t':<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; nwhite++;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; default:<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; nother++;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "digit =&gt; ";<br />
+&nbsp;&nbsp;&nbsp; for (i = 0; i &lt; 10; i++)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; ndigit[i] &lt;&lt; "&nbsp; ";<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "\nwhite space =&gt; " &lt;&lt; nwhite &lt;&lt; ", other =&gt; " &lt;&lt; nother &lt;&lt; endl;<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>do-while statement<sup class="tocAnchorContainer"><a href="#toc_6" title="toc_6" class="anchor" id="toc_6" >#</a></sup></h5>
+<ol class="code">
+<li>[형식]</li>
+<li><strong>do 실행문; while(조건식);</strong></li>
+</ol>
+<ul>
+<li>실행문을 먼저 처리한 후 조건식을 판단하여 반복을 결정</li>
+<li>적어도 한번 실행문을 수행해야 될 경우에 사용한다.</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>/* while문을 사용하여 1^2+3^2+...+...의 값이 500을 넘을 때의 값 출력 */<br />
+#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; short a=1, c=0;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "1^2+3^2+...+...의 값이 500을 넘을 때의 값 : ";<br />
+&nbsp;&nbsp;&nbsp; do {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; c += a * a;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; a += 2;<br />
+&nbsp;&nbsp;&nbsp; } while (c &lt; 500);<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; c &lt;&lt; endl;<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int number, right_digit;<br />
+&nbsp;&nbsp;&nbsp; int n = 0;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "enter your number : ";<br />
+&nbsp;&nbsp;&nbsp; cin &gt;&gt; number;<br />
+&nbsp;&nbsp;&nbsp; do {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; right_digit = number % 10;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; right_digit;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; n = n * 10 + right_digit;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; number = number / 10;<br />
+&nbsp;&nbsp;&nbsp; } while (number != 0);<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>for statement<sup class="tocAnchorContainer"><a href="#toc_7" title="toc_7" class="anchor" id="toc_7" >#</a></sup></h5>
+<ol class="code">
+<li>[형식]</li>
+<li><strong>for (초기식; 조건식; 증감식)</strong></li>
+<li><strong>&nbsp;&nbsp;&nbsp;statement</strong></li>
+</ol>
+<ul>
+<li>초기식 : 루프제어 변수를 설정하기 위한 지정문</li>
+<li>조건식 : 어떤 값과 루프제어 변수를 비교하여 언제 루프가 끝날지를 결정하는 관계연산자가 사용</li>
+<li>증감식 : 각 루프가 반복될 때마다 루프제어 변수를 변화시키는 방법을 정의</li>
+<li>for 루프는 조건이 참인 동안 계속 반복된다.</li>
+<li>조건 비교에 실패하면 for 다음의 실행문으로 제어를 넘긴다.</li>
+</ul>
+<ol class="code">
+<li><strong>for (count = 1; count &lt; num; count++)</strong></li>
+<li><strong>&nbsp;&nbsp;&nbsp; cout &lt;&lt; "continue";</strong></li>
+</ol>
+<ul>
+<li>&nbsp;</li>
+<li>
+<p>for statment의 융통성</p>
+<ul>
+<li>
+<p>루프 제어 변수의 데이터형에 제한이 없다.</p>
+<ul>
+<li>정수형 변수, 실수형 변수, 문자형 변수, 포인터 변수</li>
+</ul>
+</li>
+<li>
+<p>증감식에 제한이 없다.</p>
+<ul>
+<li>산술 급수적 증감, 기하 급수적 증감, 복합적 증감</li>
+</ul>
+</li>
+<li>
+<p>조건식에 제한이 없다.</p>
+<ul>
+<li>관계식, 논리식, 논리적 의미를 가지는 임의의 수식</li>
+</ul>
+</li>
+<li>초기식에 제한이 없다.</li>
+<li>초기식, 조건식, 증감식은 생략 가능하다.</li>
+<li>루프의 반복횟수를 실행중에 변경 가능하다.</li>
+<li>여러개의 제어변수를 동시에 사용 가능하다.</li>
+<li>break문 및 contine문의 제어를 받는다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void func1(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; for (char letter = 'A'; letter &lt;= 'Z'; letter++)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; letter &lt;&lt; ' ';<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; endl;<br />
+}<br />
+<br />
+/* for 문을 사용하여 1^2+3^2+...+...의 값이 500을 넘을 때의 값 출력 */<br />
+void func2(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; short a, c=0;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "1^2+3^2+...+...의 값이 500을 넘을 때의 값 : ";<br />
+&nbsp;&nbsp;&nbsp; for (a = 1; c &lt; 500; a += 2) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; c += a * a;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; c &lt;&lt; endl;<br />
+}<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; func1();<br />
+&nbsp;&nbsp;&nbsp; func2();<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>while 문과 for 문의 비교<sup class="tocAnchorContainer"><a href="#toc_8" title="toc_8" class="anchor" id="toc_8" >#</a></sup></h5>
+</li>
+</ul>
+<p>&nbsp;</p>
+<table class="dataTable2" style="MARGIN-LEFT: 2em;">
+<tbody>
+<tr>
+<td>
+<ol class="code">
+<li>for (expr1; expr2; expr3)<br />
+&nbsp;&nbsp;&nbsp; statement<br />
+next statment</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</td>
+<td>
+<ol class="code">
+<li>expr1;<br />
+while (expr2) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp; statement<br />
+&nbsp;&nbsp;&nbsp; expr3;<br />
+}<br />
+next statment</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="MARGIN-LEFT: 2em;">&nbsp;</p>
+<table class="dataTable2" style="MARGIN-LEFT: 2em;">
+<tbody>
+<tr>
+<td>
+<ol class="code">
+<li>int sum = 0;<br />
+<br />
+for (int cnt = 1; cnt &lt;= 100; cnt++) {<br />
+&nbsp;&nbsp;&nbsp; sum += cnt;<br />
+}<br />
+cout &lt;&lt; "Sum =&gt; " &lt;&lt; sum &lt;&lt; endl;</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</td>
+<td>
+<ol class="code">
+<li>int cnt, sum = 0;<br />
+<br />
+cnt = 1;<br />
+while (cnt &lt;= 100) {<br />
+&nbsp;&nbsp;&nbsp; sum += cnt;<br />
+&nbsp;&nbsp;&nbsp; cnt++;<br />
+}<br />
+cout &lt;&lt; "Sum =&gt; " &lt;&lt; sum &lt;&lt; endl;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+#include &lt;string.h&gt;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // 문자열 처리<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; char s[15];<br />
+&nbsp;&nbsp;&nbsp; int&nbsp; i, j, c;<br />
+<br />
+&nbsp;&nbsp;&nbsp; strcpy (s, "reverse string");<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; s &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; // reverse string<br />
+&nbsp;&nbsp;&nbsp; for (i = 0, j = strlen(s)-1; i &lt; j; i++, j--)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; c = s[i], s[i] = s[j], s[j] = c;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; s &lt;&lt; endl;<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int magic, guess, right = 0;<br />
+<br />
+&nbsp;&nbsp;&nbsp; for (int i = 1; i &lt;= 10; i++) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; magic = rand() % 10;&nbsp;&nbsp;&nbsp; // get a random number (0~9)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cin &gt;&gt; guess;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (guess == magic) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "** Right **\n";<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; right++;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "Sorry, Magic number is " &lt;&lt; magic &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Total " &lt;&lt; right &lt;&lt; " EA right!!";<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<h3>분기문<sup class="tocAnchorContainer"><a href="#toc_9" title="toc_9" class="anchor" id="toc_9" >#</a></sup></h3>
+<ul>
+<li>
+<h5>break statement<sup class="tocAnchorContainer"><a href="#toc_10" title="toc_10" class="anchor" id="toc_10" >#</a></sup></h5>
+<ul>
+<li>for, while, do-while, switch 문에 대하여 영향력을 갖는다.</li>
+<li>break 문을 기준으로 하여 가장 가까운 블록 또는 반복구조에서 한 겹만 빠져 나온다.</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void func1(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int n, sum = 0;<br />
+&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp; for (n = 1; ; n++) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; sum += n;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (500 &lt; sum)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; break;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Sum =&gt; " &lt;&lt; sum &lt;&lt; endl;<br />
+}<br />
+<br />
+void func2(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int i, j;<br />
+&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp; for (i = 2; i &lt; 1000 ; i++) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; for (j = 2; j &lt;= i/2; j++) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (!(i%j))<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (j &gt; i/2)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; i &lt;&lt; " is prime" &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+}<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; func1();<br />
+&nbsp;&nbsp;&nbsp; func2();<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>continue statement<sup class="tocAnchorContainer"><a href="#toc_11" title="toc_11" class="anchor" id="toc_11" >#</a></sup></h5>
+<ul>
+<li>for, while, do-while 문에 대하여 영향력을 가진다.</li>
+<li>continue 를 만나면 해당 Block의 나머지 문장은 Skip하고 반복구조의 처음으로 돌아간다.</li>
+<li>for 문에서는 증감식으로 제어 이동한다.</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void func1(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int s = 0;<br />
+&nbsp;&nbsp;&nbsp; for (int i = 1; i &lt;= 100; i++) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (i % 5 == 0)<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; continue;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; s += i;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; s &lt;&lt; endl;<br />
+}<br />
+<br />
+const int Size = 80;<br />
+void func2(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; char line[Size];<br />
+&nbsp;&nbsp;&nbsp; int&nbsp; spaces = 0;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Enter a line of test : \n";<br />
+&nbsp;&nbsp;&nbsp; cin.get(line, Size);<br />
+&nbsp;&nbsp;&nbsp; for (int i = 0; line[i] != '\0'; i++) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; line[i];&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // 문자를 디스플레이<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (line[i] == '.')&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // 마침표이면 중지<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (line[i] != ' ')&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // 나머지는 루프를 건너뜀<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; continue;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; spaces++;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; '\n' &lt;&lt; spaces &lt;&lt; " spacess\n";<br />
+}<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; func1();<br />
+&nbsp;&nbsp;&nbsp; func2();<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ul>
+<li>
+<h5>goto statement<sup class="tocAnchorContainer"><a href="#toc_12" title="toc_12" class="anchor" id="toc_12" >#</a></sup></h5>
+<ol class="code">
+<li>[형식]</li>
+<li><strong>goto label;</strong></li>
+<li><strong>label:</strong></li>
+</ol>
+<ul>
+<li>될 수 있으면 쓰지 않는것이 좋다.</li>
+<li>error routine 처리시 사용 또는 깊게 중첩된 반복구조 탈출시 사용한다.</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "test 1" &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; goto my_label;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "test 2" &lt;&lt; endl;<br />
+<br />
+my_label:<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "test 3" &lt;&lt; endl;<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<h3>Workshop<sup class="tocAnchorContainer"><a href="#toc_13" title="toc_13" class="anchor" id="toc_13" >#</a></sup></h3>
+<ol>
+<li>
+<p>정수 두 수와 +, -, *, / 연산자를 문자로 입력받는다.</p>
+<p>그 의미에 따라 두 변수의 연산결과를 출력하는 프로그램을 작성하라. (if 문장 사용)</p>
+<p>&nbsp;</p>
+</li>
+<li>
+<p>1번 문제를 switch 문장을 사용하여 프로그램하라</p>
+<p>&nbsp;</p>
+<p>( 3 ~ 6 번 문제는 for, while, do-while 문을 사용)</p>
+</li>
+<li>
+<p>1에서 100까지 더하여 합을 출력하는 프로그램을 작성하라.</p>
+<p>&nbsp;</p>
+</li>
+<li>
+<p>1에서 100까지의 홀수의 합을 구하는 프로그램을 작성하라.</p>
+<p>&nbsp;</p>
+</li>
+<li>
+<p>1000, 900, 800, ...0을 출력하는 프로그램을 작성하라.</p>
+<p>&nbsp;</p>
+</li>
+<li>1 + 2 + 3 + ... + n &lt; 1000 의 n 값과 합을 구하는 프로그램을 작성하라.</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+	<!-- SPRINGNOTE::PAGE_CONTENT_END -->
+
+
+
+</body>
+</html>
