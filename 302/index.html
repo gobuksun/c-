@@ -1,1 +1,885 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
 
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>302.C++ 구성요소와 자료형</title>
+
+</head>
+
+<body class="xhtmlEditorBody background_no" id="viewXhtml_body">
+<h1 class="printNxhtmlTitle hentry" style="display:none;"><a href="http://mie.springnote.com/pages/9972872" rel="bookmark">302.C++ 구성요소와 자료형</a></h1>
+
+
+	<!-- SPRINGNOTE::PAGE_CONTENT_START -->
+	<div id="toc" style="BORDER-BOTTOM: tan 1px solid; BORDER-LEFT: tan 1px solid; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,250); PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: tan 1px solid; BORDER-RIGHT: tan 1px solid; PADDING-TOP: 2px;">
+<p><strong>목차</strong></p>
+<hr />
+<ol>
+<li><a href="#toc_0" title="toc_0" class="external">명칭 (Identifier)</a></li>
+<li><a href="#toc_1" title="toc_1" class="external">키워드 (Keyword)</a></li>
+<li><a href="#toc_2" title="toc_2" class="external">상수 (Constant or Literal)</a>
+<ol>
+<li><a href="#toc_3" title="toc_3" class="external">정수상수</a></li>
+<li><a href="#toc_4" title="toc_4" class="external">부동상수</a></li>
+<li><a href="#toc_5" title="toc_5" class="external">문자 상수</a></li>
+<li><a href="#toc_6" title="toc_6" class="external">문자열 상수</a></li>
+</ol>
+</li>
+<li><a href="#toc_7" title="toc_7" class="external">연산자 (Operator)</a></li>
+<li><a href="#toc_8" title="toc_8" class="external">분리자 (Segregator or Punctuator)</a></li>
+<li><a href="#toc_9" title="toc_9" class="external">자료형의 종류 및 구분</a></li>
+<li><a href="#toc_10" title="toc_10" class="external">변환규칙</a></li>
+<li><a href="#toc_11" title="toc_11" class="external">상수형 (Constant Type)</a></li>
+<li><a href="#toc_12" title="toc_12" class="external">열거형 (Enumeration Type)</a></li>
+<li><a href="#toc_13" title="toc_13" class="external">참조형 (Reference Type)</a></li>
+<li><a href="#toc_14" title="toc_14" class="external">변수의 초기화</a></li>
+<li><a href="#toc_15" title="toc_15" class="external">배열형(Array Type)의 표현</a></li>
+<li><a href="#toc_16" title="toc_16" class="external">배열의 초기화</a></li>
+<li><a href="#toc_17" title="toc_17" class="external">Workshop</a></li>
+</ol>
+</div>
+<p>&nbsp;</p>
+<h3><strong>명칭 (Identifier)</strong><sup class="tocAnchorContainer"><a href="#toc_0" title="toc_0" class="anchor" id="toc_0" >#</a></sup></h3>
+<ul>
+<li>영문과 숫자로 구성</li>
+<li>첫문자는 반드시 영문자 ( _는 영문자로 간주)</li>
+<li>대소문자는 구별되어 취급</li>
+<li>길이 제한 없음</li>
+<li>사용자 정의가 가능한 곳에서 사용 (변수명, 배열명, 함수명, Class명)</li>
+<li>키워드는 사용 불가</li>
+</ul>
+<ol class="code">
+<li>가능 : n, My_001_Name, CLASS, ___</li>
+<li>불가능 : 001, 01_value, total.name, class</li>
+</ol>
+<p>&nbsp;</p>
+<h3>키워드 (Keyword)<sup class="tocAnchorContainer"><a href="#toc_1" title="toc_1" class="anchor" id="toc_1" >#</a></sup></h3>
+<ul>
+<li>키워드는 일반명칭(id)로 사용 불가</li>
+<li>순환 : for, while, do</li>
+<li>결정과 선택 : if, else, switch, case, default</li>
+<li>분기 : break, continue, goto</li>
+<li>자료형(Data Type) : char, int, short, long, unsigned, float, double, signed, enum, struct, union, typedef, void, const, volatile, class, public, private, protected, operator, virtual, friend, template</li>
+<li>기억부류 : auto, extern, register, static</li>
+<li>메모리 관리 : new, delete</li>
+<li>예외처리 : catch, try, throw</li>
+<li>기타 : return, sizeof, inline, this, asm</li>
+</ul>
+<p>&nbsp;</p>
+<h3>상수 (Constant or Literal)<sup class="tocAnchorContainer"><a href="#toc_2" title="toc_2" class="anchor" id="toc_2" >#</a></sup></h3>
+<h5>정수상수<sup class="tocAnchorContainer"><a href="#toc_3" title="toc_3" class="anchor" id="toc_3" >#</a></sup></h5>
+<ul>
+<li>연속된 숫자로 구성</li>
+<li>0(Zero)로 시작 (8진법 수), 0x, 0X로 시작 (16진법수)</li>
+<li>.(소수점)이나 ,(콤마)를 포함하지 않음 --&gt; 정수</li>
+<li>u, U, l, L 등의 접미사가 가능 (u : unsigned형, l:long형)</li>
+</ul>
+<ol class="code">
+<li>123, -123, 012, 0xff, -34L, 65535u</li>
+</ol>
+<p>&nbsp;</p>
+<h5>부동상수<sup class="tocAnchorContainer"><a href="#toc_4" title="toc_4" class="anchor" id="toc_4" >#</a></sup></h5>
+<ul>
+<li>정수 + 소수</li>
+<li>e, E로 지수부분 표시</li>
+<li>f, F, l, L 접미사 가능 (f:float형, l:long형)</li>
+<li>접미사 생략시 <strong>double</strong> 로 취급</li>
+</ul>
+<ol class="code">
+<li>1.2, .12, 1.2e5, 3.14f</li>
+</ol>
+<p>&nbsp;</p>
+<h5>문자 상수<sup class="tocAnchorContainer"><a href="#toc_5" title="toc_5" class="anchor" id="toc_5" >#</a></sup></h5>
+<ul>
+<li>' ' 사이에 표시</li>
+<li>해당기종의 문자코드 값</li>
+</ul>
+<ol class="code">
+<li>'a', '$', '\n', '\\', '\0'</li>
+</ol>
+<p>&nbsp;</p>
+<h5>문자열 상수<sup class="tocAnchorContainer"><a href="#toc_6" title="toc_6" class="anchor" id="toc_6" >#</a></sup></h5>
+<ul>
+<li>" " 사이에 있는 연속된&nbsp;문자들</li>
+<li>문자배열 형태로 기억장소내에 저장 (주소값)</li>
+<li>실제 길이는 (해당문자갯수 + 1)&nbsp; --&gt; '\0' 포함</li>
+<li>인접한 문자열은 하나의 문자열로 연결&nbsp;</li>
+</ul>
+<ol class="code">
+<li>"hello " "world" = "hello world"</li>
+<li>char str[] = "Wonderful"</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Tonight"</li>
+</ol>
+<ul>
+<li>개행문자(new line)나 " 문자는 그냥 포함할 수 없음</li>
+</ul>
+<ol class="code">
+<li>char str[] = "This is not a string</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;but a a syntax error"</li>
+<li>==&gt; string 뒤부터 but 앞까지 모두 스페이스로 인정</li>
+<li>new line --&gt;&nbsp;\n, " --&gt; \"</li>
+</ol>
+<p>&nbsp;</p>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+int main()<br />
+{<br />
+&nbsp;&nbsp;&nbsp; char ch1 = 'i';<br />
+&nbsp;&nbsp;&nbsp; char ch2 = 'j';<br />
+&nbsp;&nbsp;&nbsp; char ch3;<br />
+&nbsp;&nbsp;&nbsp; int ch4 = 'i';<br />
+&nbsp;&nbsp;&nbsp; int ch5 = 'j';<br />
+&nbsp;&nbsp;&nbsp; int ch6;<br />
+<br />
+&nbsp;&nbsp;&nbsp; ch3 = ch1 + ch2;<br />
+&nbsp;&nbsp;&nbsp; ch6 = ch4 + ch5;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; ch1 &lt;&lt; " " &lt;&lt; ch2 &lt;&lt; " " &lt;&lt; ch3&nbsp; &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; ch4 &lt;&lt; " " &lt;&lt; ch5 &lt;&lt; " " &lt;&lt; ch6&nbsp; &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "\"This line is good string.\"";<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "This line is not\<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cut.";<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Beef at end of message\a\n";<br />
+}</li>
+</ol>
+<p><img title="" class="attachment emoticon" src="http://static.springnote.com/images/icon/emoticon_xmas6.gif" alt="" /> <a href="/pages/10021912" title="801.ASCII 코드표" class="wiki newWindow">801.ASCII 코드표</a> 참조</p>
+<p>&nbsp;</p>
+<h3>연산자 (Operator)<sup class="tocAnchorContainer"><a href="#toc_7" title="toc_7" class="anchor" id="toc_7" >#</a></sup></h3>
+<ul>
+<li>연산 행위에 사용되는 기호</li>
+<li><a href="/pages/9972972" title="303.연산자(Operators)" class="wiki">303.연산자(Operators)</a> 참조</li>
+</ul>
+<p>&nbsp;</p>
+<h3>분리자 (Segregator or Punctuator)<sup class="tocAnchorContainer"><a href="#toc_8" title="toc_8" class="anchor" id="toc_8" >#</a></sup></h3>
+<ul>
+<li>[ ]&nbsp;&nbsp;&nbsp; ( )&nbsp;&nbsp;&nbsp; { }&nbsp;&nbsp;&nbsp; ,&nbsp;&nbsp;&nbsp; ;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp; ...&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp; =&nbsp;&nbsp;&nbsp; #</li>
+<li>
+<p>공백문자</p>
+<ul>
+<li>Token을 분리할 때 사용</li>
+<li>기타의 경우는 무시</li>
+<li>Blanks, Tabs, newlines, form feeds, comments 등</li>
+</ul>
+</li>
+<li>
+<p>주석문</p>
+<ul>
+<li>C/C++ : /* 주석문 */ , 중첩 사용 불가</li>
+<li>C++ only ; //</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h3>자료형의 종류 및 구분<sup class="tocAnchorContainer"><a href="#toc_9" title="toc_9" class="anchor" id="toc_9" >#</a></sup></h3>
+<ul>
+<li>
+<p>자료형의 종류와 구분</p>
+<ul>
+<li><a href="5717928_302_1.PNG"><img title="302_1.PNG" class="attachment" src="5717928_302_1.PNG" height="678" alt="302_1.PNG" width="588" /></a></li>
+</ul>
+</li>
+<li>
+<p>기본 자료형의 크기와 범위</p>
+<ul>
+<li>
+<table class="dataTable2">
+<thead>
+<tr>
+<th>자료형</th>
+<th>비트폭</th>
+<th>자료형의 표현범위</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char</td>
+<td>8</td>
+<td>-128 ~ 127</td>
+</tr>
+<tr>
+<td>signed char</td>
+<td>8</td>
+<td>-128 ~ 127</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>8</td>
+<td>0 ~ 255</td>
+</tr>
+<tr>
+<td>enum</td>
+<td>16(32)</td>
+<td>-32768 ~ 32767</td>
+</tr>
+<tr>
+<td>int ( = signed int )</td>
+<td>16(32)</td>
+<td>-32768 ~ 32767</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>16(32)</td>
+<td>0 ~ 65535</td>
+</tr>
+<tr>
+<td>short int ( = short )</td>
+<td>16</td>
+<td>-32768 ~ 32767</td>
+</tr>
+<tr>
+<td>unsigned short int</td>
+<td>16</td>
+<td>0 ~ 65535</td>
+</tr>
+<tr>
+<td>long int ( = long )</td>
+<td>32</td>
+<td>-2147483648 ~ 2147483647</td>
+</tr>
+<tr>
+<td>unsigned long int</td>
+<td>32</td>
+<td>0 ~ 4294967295</td>
+</tr>
+<tr>
+<td>float</td>
+<td>32</td>
+<td>3.4E+38 ~ 1.1E-38 (소수 6자리)</td>
+</tr>
+<tr>
+<td>double</td>
+<td>64</td>
+<td>1.7E+308 ~ 2.2E-308 (소수 15자리)</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>80(96)</td>
+<td>1.1E±4932 (소수 19자리)</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>32bit 컴파일러 : short &lt; int = long</li>
+<li>16bit 컴파일러 : short = int &lt; long</li>
+<li>문자 : char 형</li>
+<li>정수 : int형,&nbsp;&nbsp; 작은 정수 : short형,&nbsp;&nbsp; 큰정수 : long long형</li>
+<li>실수 : double형,&nbsp;&nbsp; 작은 실수 : float형,&nbsp;&nbsp; 큰 실수 : long double형</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h3>변환규칙<sup class="tocAnchorContainer"><a href="#toc_10" title="toc_10" class="anchor" id="toc_10" >#</a></sup></h3>
+<ul>
+<li>
+<p>정수형 변환</p>
+<ul>
+<li>
+<table class="dataTable2">
+<thead>
+<tr>
+<th>자료형</th>
+<th>변환되는 형</th>
+<th>변환 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char</td>
+<td>int</td>
+<td>부호확장</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>int</td>
+<td>부호확장 안됨</td>
+</tr>
+<tr>
+<td>short</td>
+<td>int</td>
+<td>부호확장</td>
+</tr>
+<tr>
+<td>long</td>
+<td>int</td>
+<td>동일값</td>
+</tr>
+<tr>
+<td>unsigned short</td>
+<td>unsigned int</td>
+<td>동일값</td>
+</tr>
+<tr>
+<td>enum</td>
+<td>int</td>
+<td>동일값</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>
+<p>float형과 double형간 변환</p>
+<ul>
+<li>float에서 double 또는 long double로 변환시 값 보존</li>
+<li>반대의 경우는 상대적</li>
+</ul>
+</li>
+<li>
+<p>실수(Floating)형과 정수(Integral)형간 변환</p>
+<ul>
+<li>정수형이 실수형으로 변환시 값 보존</li>
+<li>실수형이 정수형으로 변환시 소수부분 생략</li>
+<li>실수형 값이 정수형 최대값보다 클시에는 정의 불가</li>
+</ul>
+</li>
+<li>
+<p>산술적 변환 (Arithmetic Conversions)</p>
+<ul>
+<li>오퍼랜드 결과형태와 같은 형태의 공통적인 형태로 변환되는 것</li>
+<li>대입식에서 =의 우변에 있는 수식의 최종결과값은 좌변의 데이터형으로 변환된 후 대입</li>
+<li>함수를 호출할 때에는 실매개 변수가 함수로 전달되면서 형변환이 일어남</li>
+</ul>
+</li>
+<li>
+<p>Type Hierarchy Chart</p>
+<ul>
+<li><a href="5717930_302_2.PNG"><img title="302_2.PNG" class="attachment" src="5717930_302_2.PNG" height="820" alt="302_2.PNG" width="573" /></a></li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h3>상수형 (Constant Type)<sup class="tocAnchorContainer"><a href="#toc_11" title="toc_11" class="anchor" id="toc_11" >#</a></sup></h3>
+<ul>
+<li>한번 지정된 대상체의 내용에 대하여 상수의 속성(Read Only)을 갖도록 한것</li>
+<li>형식</li>
+</ul>
+<div class="section" style="BACKGROUND-COLOR: rgb(249,249,216); MARGIN-LEFT: 2em;">
+<p class="section">const &lt;형 지정자&gt; &lt;명칭&gt; = &lt;초기값&gt;;</p>
+<p class="section">const double&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pi&nbsp;&nbsp;&nbsp;&nbsp; = 3.141592;</p>
+</div>
+<ul>
+<li>정의시 반드시 초기화</li>
+<li>한번 초기화된 상수형은 차후에 변경 불가</li>
+<li>매크로 상수(#define...)와 달리 컴파일러에 의해 처리되므로 참조영역 규칙을 따른다.</li>
+<li>배열의 크기를 지정할 때에 쓰이는 예</li>
+</ul>
+<ol class="code">
+<li>const int Size;</li>
+<li>const int maxSize = 100;</li>
+<li>const bufSize = 512;</li>
+<li>const maxBufSize = bufSize * 2;</li>
+<li>int var;</li>
+<li>int buf[bufSize];</li>
+<li>// .....................</li>
+<li>&nbsp;</li>
+<li>Size = maxSize;&nbsp;&nbsp; // (X)</li>
+<li>if (maxSize &lt; var)</li>
+<li style="MARGIN-LEFT: 2em;">maxSize = var;&nbsp;&nbsp; // (X)</li>
+<li>for (int i = 0; i &lt; bufSize; i++) {</li>
+<li>// ......</li>
+<li>}</li>
+</ol>
+<p>&nbsp;</p>
+<h3>열거형 (Enumeration Type)<sup class="tocAnchorContainer"><a href="#toc_12" title="toc_12" class="anchor" id="toc_12" >#</a></sup></h3>
+<ul>
+<li>열거형은 상수형으로 이루어진 집합을 의미</li>
+<li>형식</li>
+</ul>
+<div class="section" style="BACKGROUND-COLOR: rgb(249,249,216);">enum { 열거자1, 열거자2, 열거자3 ... };</div>
+<ul>
+<li>열거자의 명칭은 int 형태의 상수로 정의된다.</li>
+</ul>
+<ol class="code">
+<li>
+<table class="dataTable2">
+<tbody>
+<tr>
+<td>
+<p>enum int False = 0;</p>
+<p>const int True = 1;</p>
+</td>
+<td>
+<p>enum (False, True);</p>
+<p>와 같다.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<ul>
+<li>열거자의 가장 왼쪽값은 0이고 오른쪽으로 갈수록 1씩 증가한다.</li>
+<li>열거자에서 값이 지정되면 다음의 열거자는 지정된 값부터 1씩 증가해 간다.</li>
+</ul>
+<ol class="code">
+<li>enum { mon, tue = 5, wed, thu, fri };</li>
+<li>--&gt; mon:0, wed:6, fri:8</li>
+</ol>
+<ul>
+<li>같은 영역에서 열거자의 이름들은 서로 구별되어야 한다.</li>
+<li>같은 영역에서 열거자 명칭과 변수명으로 구별되어야 한다.</li>
+<li>각 열거자의 값은 같아도 상관없다.</li>
+<li>열거형은 컴파일러에 의해 처리되므로 참조영역 규칙이 적용된다.</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+enum {mon, tue, wed, thu, fri};<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int week_day;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cin &gt;&gt; week_day;<br />
+&nbsp;&nbsp;&nbsp; switch(week_day) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case mon : cout &lt;&lt; "Monday"; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case tue : cout &lt;&lt; "Tuesday"; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case wed : cout &lt;&lt; "Wednesday"; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case thu : cout &lt;&lt; "Thursday"; break;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case fri : cout &lt;&lt; "Friday"; break;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<h3>참조형 (Reference Type)<sup class="tocAnchorContainer"><a href="#toc_13" title="toc_13" class="anchor" id="toc_13" >#</a></sup></h3>
+<ul>
+<li>임의의 대상체를 지칭하는 또 다른 명칭 (Alias)</li>
+<li>형식</li>
+</ul>
+<div class="section" style="BACKGROUND-COLOR: rgb(249,249,216); MARGIN-LEFT: 2em;">
+<p>&lt;형지정자&gt; &amp;&lt;참조형 명칭&gt; = &lt;참조할 대상체&gt;;</p>
+<p>예) int i;<br />
+&nbsp;&nbsp;&nbsp;&nbsp; int &amp;iref = i;</p>
+</div>
+<ul>
+<li>참조형을 위한 기억공간은 따로 생성되지 않는다. (즉, 같은 기억공간을 다른 이름으로 사용함)</li>
+<li>참조형은 항상 선언과 동시에 참조 대상체로 초기화하여야 함.</li>
+<li>주로 함수의 매개변수나 반환형으로 사용</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int var1, var2 = 20, var3 = 30;<br />
+&nbsp;&nbsp;&nbsp; int &amp;rvar1 = var1, &amp;rvar2 = var2;<br />
+&nbsp;&nbsp;&nbsp; int &amp;rvar3 = var3, &amp;rvar4 = var3;<br />
+&nbsp;&nbsp;&nbsp; int &amp;rvar5;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 오류 : error C2530: 'rvar5' : 참조를 초기화해야 합니다.&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp; int &amp;rvar6 = 10;&nbsp;&nbsp; // 오류 : error C2440: '초기화 중' : 'int'에서 'int &amp;'(으)로 변환할 수 없습니다.<br />
+<br />
+&nbsp;&nbsp;&nbsp; var1 = 10;&nbsp;&nbsp;&nbsp; &nbsp; cout &lt;&lt; rvar1;<br />
+&nbsp;&nbsp;&nbsp; rvar1 = 100;&nbsp;&nbsp;&nbsp; cout &lt;&lt; var1;<br />
+&nbsp;&nbsp;&nbsp; var2 = 200;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; rvar2;<br />
+&nbsp;&nbsp;&nbsp; rvar4 = 300;&nbsp;&nbsp;&nbsp; cout &lt;&lt; rvar3 &lt;&lt; var3;<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<h3>변수의 초기화<sup class="tocAnchorContainer"><a href="#toc_14" title="toc_14" class="anchor" id="toc_14" >#</a></sup></h3>
+<ul>
+<li>변수의 정의시 초기값을 줄 수 있다.</li>
+<li>동일영역 내에서 동일한 명칭으로 재정의 할 수 없다.</li>
+<li>초기값을 주지 않았을 경우 임의의 값(garbage)을 가진다.</li>
+<li>실행문 중간에도 변수를 정의하고 초기값을 줄 수 있다. (C++)</li>
+<li>초기화는 해당 함수가 호출될 때마다 이루어진다.</li>
+<li>초기화는 실행 시에 이루어지므로 값을 가질 수 있는 모든 표현을 사용하여 초기값을 줄 수 있다.</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; void foo(void);&nbsp; // 함수 선언</li>
+<li><br />
+&nbsp;&nbsp;&nbsp; int a = 0, b;<br />
+&nbsp;&nbsp;&nbsp; int c = a + 1;<br />
+&nbsp;&nbsp;&nbsp; char ch = getchar();<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; a &lt;&lt; b &lt;&lt; c &lt;&lt; ch &lt;&lt; '\n';<br />
+<br />
+&nbsp;&nbsp;&nbsp; int sum = 0;&nbsp; // 함수 중간에도 변수 선언 가능<br />
+&nbsp;&nbsp;&nbsp; for (int i = 1; i &lt; 100; i++) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; sum = sum + i;<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; foo();<br />
+&nbsp;&nbsp;&nbsp; }<br />
+} // end of main<br />
+<br />
+void foo(void)&nbsp; // 함수 정의<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int i = 0;<br />
+<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; i;<br />
+&nbsp;&nbsp;&nbsp; i++;<br />
+}&nbsp; // end of foo function</li>
+</ol>
+<p>&nbsp;</p>
+<h3>배열형(Array Type)의 표현<sup class="tocAnchorContainer"><a href="#toc_15" title="toc_15" class="anchor" id="toc_15" >#</a></sup></h3>
+<ul>
+<li>배열의 정의 : 동질적인 자료형의 각 성분이 어떤 규칙에 따라서 나열되 자료의 집합</li>
+<li>형식</li>
+</ul>
+<div class="section" style="BACKGROUND-COLOR: rgb(249,249,216); MARGIN-LEFT: 2em;">&lt;자료형&gt; &lt;배열명&gt;[크기1][크기2]...[크기n];</div>
+<ul>
+<li>
+<p>배열의 첨자 (subscription)</p>
+<ul>
+<li>배열의 요소 (element)를 표시</li>
+<li>배열명 뒤 [ ] 속에 표시</li>
+<li>첨자가 여러개(다차원)일 때 [ ] 로 분리</li>
+<li>첨자는 0부터 시작한다.</li>
+<li>오른쪽 첨자 우선순위로 storage order 구성</li>
+<li>정의된 배열의 크기가 없는 배열은 사용 불가 : 예) int a[]; // error C2133: 'a' : 알 수 없는 크기입니다.</li>
+</ul>
+</li>
+<li>배열의 기억 순서 (Storage order)</li>
+</ul>
+<ol class="code">
+<li>int a[5] = {1, 2, 3, 4, 5};</li>
+<li>
+<table class="dataTable2">
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: center;">a[0]</td>
+<td style="TEXT-ALIGN: center;">a[1]</td>
+<td style="TEXT-ALIGN: center;">a[2]</td>
+<td style="TEXT-ALIGN: center;">a[3]</td>
+<td style="TEXT-ALIGN: center;">a[4]</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>int a[2][3] = {{1,2,3}, {4,5,6}};</li>
+<li>
+<table class="dataTable2">
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: center;">a[0][0]</td>
+<td style="TEXT-ALIGN: center;">a[0][1]</td>
+<td style="TEXT-ALIGN: center;">a[0][2]</td>
+<td style="TEXT-ALIGN: center;">a[1][0]</td>
+<td style="TEXT-ALIGN: center;">a[1][1]</td>
+<td style="TEXT-ALIGN: center;">a[1][2]</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<p>&nbsp;</p>
+<h3>배열의 초기화<sup class="tocAnchorContainer"><a href="#toc_16" title="toc_16" class="anchor" id="toc_16" >#</a></sup></h3>
+<ul>
+<li>
+<p>일차원 배열의 초기화</p>
+<ul>
+<li>변수의 초기화와 기본적으로 같은 특성을 지닌다.</li>
+<li>초기값의 개수는 배열크기 보다 작거나 같아야 한다.</li>
+<li>초기값의 개수가 배열크기 보다 작으면 나머지는 0으로 초기화된다.</li>
+</ul>
+<ol class="code">
+<li>int a[10];</li>
+<li>int a[10] = {0, };</li>
+</ol>
+<ul>
+<li>배열의 크기를 생략할 수도 있다.</li>
+</ul>
+</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+int a[5] = {1,2,3,4,5};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 1 | 2 | 3 | 4 | 5 |<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int b[5] = {1,2,3};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 1 | 2 | 3 | 0 | 0 |<br />
+&nbsp;&nbsp;&nbsp; int c[] = {1,2,3,4,5};&nbsp;&nbsp;&nbsp;&nbsp; | 1 | 2 | 3 | 4 | 5 |<br />
+&nbsp;&nbsp;&nbsp; int d[5] = {1,2,3,4,5,6};&nbsp; // 에러<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ul>
+<li>
+<p>다차원 배열의 초기화</p>
+<ul>
+<li>행 단위로 기억장소에 저장된다. (우첨자 우선순위)</li>
+</ul>
+<ol class="code">
+<li>int arr[3][2] = {{10,1}, {20,1}, {30,1}};</li>
+<li>
+<table class="dataTable2">
+<thead>
+<tr>
+<th>10</th>
+<th>1</th>
+<th>20</th>
+<th>1</th>
+<th>30</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: center;">[0][0]</td>
+<td style="TEXT-ALIGN: center;">[0][1]</td>
+<td style="TEXT-ALIGN: center;">[1][0]</td>
+<td style="TEXT-ALIGN: center;">[1][1]</td>
+<td style="TEXT-ALIGN: center;">[2][0]</td>
+<td style="TEXT-ALIGN: center;">[2][1]</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</li>
+</ul>
+<p>&nbsp;</p>
+<ol class="code" style="MARGIN-LEFT: 2em;">
+<li>int arr[3][2] = {10, 1, 20}</li>
+<li>
+<table class="dataTable2">
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: center;">10</td>
+<td style="TEXT-ALIGN: center;">1</td>
+<td style="TEXT-ALIGN: center;">20</td>
+<td style="TEXT-ALIGN: center;">0</td>
+<td style="TEXT-ALIGN: center;">0</td>
+<td style="TEXT-ALIGN: center;">0</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>int arr[3][2] = {{10,}, {20,},}</li>
+<li>
+<table class="dataTable2">
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: center;">10</td>
+<td style="TEXT-ALIGN: center;">0</td>
+<td style="TEXT-ALIGN: center;">20</td>
+<td style="TEXT-ALIGN: center;">0</td>
+<td style="TEXT-ALIGN: center;">0</td>
+<td style="TEXT-ALIGN: center;">0</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>int arr[3][2] = {{10,1},{20,1},}</li>
+<li>
+<table class="dataTable2">
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: center;">10</td>
+<td style="TEXT-ALIGN: center;">1</td>
+<td style="TEXT-ALIGN: center;">20</td>
+<td style="TEXT-ALIGN: center;">1</td>
+<td style="TEXT-ALIGN: center;">0</td>
+<td style="TEXT-ALIGN: center;">0</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>int arr[3][2] = {{10,1},{20,1},{0,0}}</li>
+<li>
+<table class="dataTable2">
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: center;">10</td>
+<td style="TEXT-ALIGN: center;">1</td>
+<td style="TEXT-ALIGN: center;">20</td>
+<td style="TEXT-ALIGN: center;">1</td>
+<td style="TEXT-ALIGN: center;">0</td>
+<td style="TEXT-ALIGN: center;">0</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<p>&nbsp;</p>
+<ul>
+<li>
+<p>배열의 크기를 생략시</p>
+<ul>
+<li>초기값의 개수만큼 배열의 크기가 확보된다.</li>
+<li>다차원 배열인 경우에는 가장 왼쪽 첨자의 크기만 생략할 수 있다.</li>
+<li>sizeof()를 사용하여 배열의 크기를 계산할 수 있다. --&gt; 배열의 크기 = sizeof(배열명) / sizeof(type)</li>
+</ul>
+</li>
+</ul>
+<ol class="code">
+<li>int arr[] = {1,2,3,4,5,6};</li>
+<li>
+<table class="dataTable2">
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: center;">[0]</td>
+<td style="TEXT-ALIGN: center;">[1]</td>
+<td style="TEXT-ALIGN: center;">[2]</td>
+<td style="TEXT-ALIGN: center;">[3]</td>
+<td style="TEXT-ALIGN: center;">[4]</td>
+<td style="TEXT-ALIGN: center;">[5]</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;int arr[][2] = {{10,1},{20,1},{30,1}};</p>
+</li>
+<li>
+<table class="dataTable2">
+<thead>
+<tr>
+<th>10</th>
+<th>1</th>
+<th>20</th>
+<th>1</th>
+<th>30</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="TEXT-ALIGN: center;">[0][0]</td>
+<td style="TEXT-ALIGN: center;">[0][1]</td>
+<td style="TEXT-ALIGN: center;">[1][0]</td>
+<td style="TEXT-ALIGN: center;">[1][1]</td>
+<td style="TEXT-ALIGN: center;">[2][0]</td>
+<td style="TEXT-ALIGN: center;">[2][1]</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<p>&nbsp;</p>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};<br />
+&nbsp;&nbsp;&nbsp; int index;<br />
+&nbsp;&nbsp;&nbsp; for (index = 0; index &lt; sizeof(days)/sizeof(int); index++) {<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; "month " &lt;&lt; index+1 &lt;&lt; " has " &lt;&lt; days[index] &lt;&lt; " days " &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<ul>
+<li>
+<p>문자배열의 초기화</p>
+<ul>
+<li>배열의 크기가 최소한 초기화할 문자의 개수와 같아야 한다.</li>
+<li>해당 문자를 다 채우고 남은 요소는 null문자('\0')로 채운다.</li>
+<li>배열의 크기와 초기화 할 문자의 개수가 같을 때는 null문자는 저장되지 않는다.</li>
+<li>배열의 크기가 생략된 경우에는 초기화될 문자의 개수 + 1 로 배열의 크기가 결정된다.</li>
+<li>다차원 배열의 갱우에는 첫번째 첨자 크기만 생략 가능하다.</li>
+</ul>
+</li>
+</ul>
+<ol class="code">
+<li>#include &lt;iostream&gt;<br />
+using namespace std;<br />
+<br />
+void main(void)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; char str1[8] = {'L','a','b','a','d','a','\0'};&nbsp; cout &lt;&lt; str1 &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; char str2[8] = {'L','a','b','a','d','a',};&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; str2 &lt;&lt; endl;<br />
+&nbsp;&nbsp;&nbsp; char str3[8] = "Lambada";&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; str3 &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; char str4[5] = "Lambada";&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // 에러 : C2117<br />
+&nbsp;&nbsp;&nbsp; char str5[5] = {'L','a','b','a','d','a','\0'};&nbsp;&nbsp;&nbsp; // 에러 : C2078<br />
+&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp; // 에러가 없음. 어떤 결과일지 알 수 없다.<br />
+&nbsp;&nbsp;&nbsp; char str6[6] = {'L','a','b','a','d','a'};&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; str6 &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; char dance1[3][8] = {{'L','a','b','a','d','a','\0'},<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;{'D','i','s','c','o','\0'},<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;{'B','a','l','l','e','t','\0'}};<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; dance1[0] &lt;&lt; " " &lt;&lt; dance1[1] &lt;&lt; " " &lt;&lt;dance1[2] &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; char dance2[3][8] = {'L','a','b','a','d','a','\0',<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;'D','i','s','c','o','\0','\0','\0',<br />
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;'B','a','l','l','e','t','\0','\0',};<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; dance2[0] &lt;&lt; " " &lt;&lt; dance2[1] &lt;&lt; " " &lt;&lt;dance2[2] &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; char dance3[3][8] = {"Lambada", "Disco", "Ballet"};<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; dance3[0] &lt;&lt; " " &lt;&lt; dance3[1] &lt;&lt; " " &lt;&lt;dance3[2] &lt;&lt; endl;<br />
+<br />
+&nbsp;&nbsp;&nbsp; char dance4[][] = {"Lambada", "Disco", "Ballet"};&nbsp; // 에러 : C2087<br />
+&nbsp;&nbsp;&nbsp; char dance4[][8] = {"Lambada", "Disco", "Ballet"};<br />
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; dance4[0] &lt;&lt; " " &lt;&lt; dance4[1] &lt;&lt; " " &lt;&lt;dance4[2] &lt;&lt; endl;<br />
+}</li>
+</ol>
+<p>&nbsp;</p>
+<h3>Workshop<sup class="tocAnchorContainer"><a href="#toc_17" title="toc_17" class="anchor" id="toc_17" >#</a></sup></h3>
+<ol>
+<li>
+<p>다음 세가지 표현의 차이점은 ?</p>
+<ol class="code">
+<li>&nbsp;A&nbsp; 'A'&nbsp; "A"</li>
+<li>&nbsp;</li>
+</ol>
+</li>
+<li>
+<p>1에서 100까지 더하여 합과 평균을 계산하여 출력하는 프로그램을 작성하라.</p>
+<p>&nbsp;</p>
+</li>
+<li>
+<p>12개월 일수를 기억시켜 출력하는 프로그램을 작성하라. (정수배열, 초기화, 배열값 출력)</p>
+<p>&nbsp;</p>
+</li>
+<li>문자열을 입력받아 출력하는 프로그램을 작성하라.</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>e</p>
+<p>&nbsp;</p>
+
+	<!-- SPRINGNOTE::PAGE_CONTENT_END -->
+
+
+
+</body>
+</html>
